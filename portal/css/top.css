@@ -1,0 +1,23 @@
+.user {
+    display: none;
+    float: right;
+    font-size: 17px;
+    padding-right: 15px;
+    line-height: 47px;
+}
+
+.user a {
+    color: #5F9EA0;
+    padding-right: 5px;
+}
+
+.nav > li .dropdown-menu {
+    margin: 0;
+}
+
+.nav > li:hover .dropdown-menu {
+    display: block;
+}
+#user-menu {
+    font-size: 0.9em;
+}

@@ -1,0 +1,27 @@
+{
+  "name": "youhao",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "CoffeeSweet"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "salvattore": "^1.0.9",
+    "waypoints": "^4.0.1",
+    "seajs": "^3.0.0",
+    "requirejs": "^2.3.3",
+    "domready": "^1.0.8",
+    "jquery-validation": "jquery-validate#^1.16.0"
+  }
+}

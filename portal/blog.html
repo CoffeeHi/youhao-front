@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>旅圈-游好旅行</title>
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Excursion Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+<!--Modal-->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div>
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#log" id="logTab" aria-controls="log" role="tab" data-toggle="tab">登录</a></li>
+						<li role="presentation"><a href="#reg" id="regTab" aria-controls="reg" role="tab" data-toggle="tab">注册</a></li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" aria-labelledby="log-tab" id="log">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="logNum" class="col-sm-2 control-label">账号</label>
+									<div class="col-sm-6">
+										<input type="email" class="form-control" id="logNum" placeholder="邮箱/手机号">
+									</div>
+									<label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
+								</div>
+								<div class="form-group">
+									<label for="logPass" class="col-sm-2 control-label">密码</label>
+									<div class="col-sm-6">
+										<input type="password" class="form-control" id="logPass" placeholder="大于6位">
+									</div>
+									<label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox"> 记住密码
+											</label>
+										</div>
+									</div>
+								</div>
+							</form>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary">登录</button>
+								<button type="button" id="close" class="btn btn-default"  data-dismiss="modal">关闭</button>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" aria-labelledby="reg-tab" id="reg">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="logNum" class="col-sm-2 control-label">账号</label>
+									<div class="col-sm-6">
+										<input type="email" class="form-control" id="regNum" placeholder="邮箱/手机号">
+									</div>
+									<label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
+								</div>
+								<div class="form-group">
+									<label for="logPass" class="col-sm-2 control-label">密码</label>
+									<div class="col-sm-6">
+										<input type="password" class="form-control" id="regPass" placeholder="大于6位">
+									</div>
+									<label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
+								</div>
+							</form>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary">注册</button>
+								<button type="button" class="btn btn-default"  data-dismiss="modal">关闭</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--navigation-->
+<div class="top-nav">
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-left">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="order.html">旅单</a></li>
+					<li><a href="blog.html" class="active">旅圈</a></li>
+					<li><a href="vrtour.html">全景</a></li>
+					<li><a href="guide.html">导游</a></li>
+					<li><a href="contact.html">联系我们</a></li>
+				</ul>
+				<div class="social-icons">
+					<ul>
+						<li><a href="#"></a></li>
+						<li><a href="#" class="fb"></a></li>
+						<li><a href="#" class="gg"></a></li>
+					</ul>
+				</div>
+				<div class="user">
+					<ul class="nav nav-pills">
+						<li>
+							<div class="dropdown-toggle"><a>陈祥</a>
+								<img src="images/head4.jpg" style="width: 30px;height: 30px; " alt="..." class="img-rounded">
+								<b class="caret"></b>
+							</div>
+							<ul id="user-menu" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的消息</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的旅单</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">个人中心</a></li>
+								<li role="presentation" class="divider"></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">退出登录</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="login">
+					<a href="#" data-toggle="modal" data-target="#modal">登录</a>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</nav>
+</div>
+<!--navigation-->
+	<!--header-->
+	<div class="header">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html"><img src="images/logo.png" alt=""></a>
+			</div>	
+			<form class="navbar-form navbar-right" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default" aria-label="Left Align">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>
+			</form>	
+		</div>	
+	</div>
+	<!--//header-->
+	<!--blog-->
+	<div class="blog">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li><a href="index.html">Home</a></li>
+				<li>Blog</li>
+			</ol>
+			<div class="col-md-8 blog-left" >
+				<div class="blog-info">
+					<h4><a href="singlepage.html">Fringilla condimentum</a></h4>
+					<p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on march 2, 2015 &nbsp;&nbsp; <a href="#">Comments (10)</a></p>
+					<div class="blog-info-text">
+						<div class="blog-img">
+							<a href="singlepage.html"> <img src="images/img12.jpg" class="img-responsive zoom-img" alt=""/></a>
+						</div>
+						<h5><a href="singlepage.html">CONDIMENTUM FRINGILLA FRINGILLA CONDIMENTUM,FINIBUS BONORUM MALORUM, DONEC UT QUAM LIGULA, SED NISI LOBORTIS.</a></h5>
+						<p class="snglp">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor If you are going to use a passage of Lorem Ipsum,
+							you need to be sure there isn't anything embarrassing hidden in the middle of text. 
+							There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration  
+							in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
+							you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+						<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">Read More</a>
+					</div>	
+				</div>
+				<div class="blog-info">
+					<h4><a href="singlepage.html">Fringilla condimentum</a></h4>
+					<p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on march 2, 2015 &nbsp;&nbsp; <a href="#">Comments (10)</a></p>
+					<div class="blog-info-text">
+						<div class="blog-img">
+							<a href="singlepage.html"> <img src="images/img13.jpg" class="img-responsive zoom-img" alt=""/></a>
+						</div>
+						<h5><a href="singlepage.html">CONDIMENTUM FRINGILLA FRINGILLA CONDIMENTUM,FINIBUS BONORUM MALORUM, DONEC UT QUAM LIGULA, SED NISI LOBORTIS.</a></h5>
+						<p class="snglp">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor If you are going to use a passage of Lorem Ipsum,
+							you need to be sure there isn't anything embarrassing hidden in the middle of text. 
+							There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration  
+							in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
+							you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+						<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">Read More</a>
+					</div>	
+				</div>	
+				<div class="blog-info">
+					<h4><a href="singlepage.html">Fringilla condimentum</a></h4>
+					<p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on march 2, 2015 &nbsp;&nbsp; <a href="#">Comments (10)</a></p>
+					<div class="blog-info-text">
+						<div class="blog-img">
+							<a href="singlepage.html"> <img src="images/img14.jpg" class="img-responsive zoom-img" alt=""/></a>
+						</div>
+						<h5><a href="singlepage.html">CONDIMENTUM FRINGILLA FRINGILLA CONDIMENTUM,FINIBUS BONORUM MALORUM, DONEC UT QUAM LIGULA, SED NISI LOBORTIS.</a></h5>
+						<p class="snglp">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor If you are going to use a passage of Lorem Ipsum,
+							you need to be sure there isn't anything embarrassing hidden in the middle of text. 
+							There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration  
+							in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
+							you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+						<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">Read More</a>
+					</div>	
+				</div>	
+				<div class="blog-info">
+					<h4><a href="singlepage.html">Fringilla condimentum</a></h4>
+					<p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on march 2, 2015 &nbsp;&nbsp; <a href="#">Comments (10)</a></p>
+					<div class="blog-info-text">
+						<div class="blog-img">
+							<a href="singlepage.html"> <img src="images/img15.jpg" class="img-responsive zoom-img" alt=""/></a>
+						</div>
+						<h5><a href="singlepage.html">CONDIMENTUM FRINGILLA FRINGILLA CONDIMENTUM,FINIBUS BONORUM MALORUM, DONEC UT QUAM LIGULA, SED NISI LOBORTIS.</a></h5>
+						<p class="snglp">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor If you are going to use a passage of Lorem Ipsum,
+							you need to be sure there isn't anything embarrassing hidden in the middle of text.  
+							There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration  
+							in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
+							you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+						<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">Read More</a>
+					</div>	
+				</div>	
+			</div>	
+			<div class="col-md-4 single-page-right">
+				<div class="category blog-ctgry">
+					<h4>Categories</h4>
+					<div class="list-group">
+						<a href="singlepage.html" class="list-group-item">Cras justo odio</a>
+						<a href="singlepage.html" class="list-group-item">Dapibus ac facilisis in</a>
+						<a href="singlepage.html" class="list-group-item">Morbi leo risus</a>
+						<a href="singlepage.html" class="list-group-item">Porta ac consectetur ac</a>
+						<a href="singlepage.html" class="list-group-item">Vestibulum at eros</a>
+						<a href="singlepage.html" class="list-group-item">Cras justo odio</a>
+						<a href="singlepage.html" class="list-group-item">Cras justo odio</a>
+						<a href="singlepage.html" class="list-group-item">Cras justo odio</a>
+					</div>
+				</div>	
+				<div class="recent-posts">
+					<h4>Recent posts</h4>
+					<div class="recent-posts-info">
+						<div class="posts-left sngl-img">
+							<a href="singlepage.html"> <img src="images/img16.jpg" class="img-responsive zoom-img" alt=""/> </a>
+						</div>
+						<div class="posts-right">
+							<lable>MARCH 5, 2015</lable>
+							<h5><a href="singlepage.html">FINIBUS BONORUM MALORUM </a></h5>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing incididunt.</p>
+							<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">Read More</a>
+						</div>
+						<div class="clearfix"> </div>
+					</div>	
+					<div class="recent-posts-info">
+						<div class="posts-left sngl-img">
+							<a href="singlepage.html"> <img src="images/img17.jpg" class="img-responsive zoom-img" alt=""/></a>
+						</div>
+						<div class="posts-right">
+							<lable>MARCH 1, 2015</lable>
+							<h5><a href="singlepage.html">FINIBUS BONORUM MALORUM </a></h5>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing incididunt.</p>
+							<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">Read More</a>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="comments">
+					<h4>Recent comments</h4>
+					<div class="comments-info">
+						<div class="cmnt-icon-left">
+							<a href="singlepage.html"><img src="images/icon1.png" alt=""/></a>
+						</div>
+						<div class="cmnt-icon-right">
+							<p>MARCH 1, 2015</p>
+							<p><a href="singlepage.html">Admin</a></p>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="cmmnt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<div class="comments-info cmnts-mddl">
+						<div class="cmnt-icon-left">
+							<a href="singlepage.html"><img src="images/icon1.png" alt=""/></a>
+						</div>
+						<div class="cmnt-icon-right">
+							<p>MARCH 1, 2015</p>
+							<p><a href="singlepage.html">Admin</a></p>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="cmmnt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<div class="comments-info">
+						<div class="cmnt-icon-left">
+							<a href="singlepage.html"><img src="images/icon1.png" alt=""/></a>
+						</div>
+						<div class="cmnt-icon-right">
+							<p>MARCH 1, 2015</p>
+							<p><a href="singlepage.html">Admin</a></p>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="cmmnt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+			<nav>
+				<ul class="pagination">
+					<li>
+						<a href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>	
+	</div>	
+	<!--//blog-->
+	<!--footer-->
+<div class="footer">
+	<div class="container">
+		<div class="col-md-4 about" >
+			<div align="center"><h3>关于我们</h3></div>
+			<p>游好，一个更为自由的旅游平台，为爱好旅游的人提供一个相识游玩的机会。
+			</p>
+			<p>在这里你可以找到志同道合的旅友和导游，大胆的说出你的旅行意愿，我们来帮你牵线搭桥。
+			</p>
+			<p>在这里你可以发表你的旅行日志和旅友们一起分享，大家沿途的风景也在旅友圈等着你一起领略。</p>
+		</div>
+		<div class="col-md-4 posts" align="center">
+			<h3>精彩旅程</h3>
+			<div class="media">
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object thumbnail" src="images/bottom1.jpg" alt="">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading"><a href="#">长城</a></h4>
+					<h5>2015-11-25</h5>
+				</div>
+			</div>
+			<div class="media">
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object thumbnail" src="images/bottom2.jpg" alt="">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading"><a href="Home.jsp?nav=Singlepage">故宫</a></h4>
+					<h5>2015-11-25</h5>
+				</div>
+			</div>
+			<div class="media">
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object thumbnail" src="images/bottom3.jpg" alt="">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading"><a href="#">福建土楼</a></h4>
+					<h5>2015-11-25</h5>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 address" align="center">
+			<h3>联系我们</h3>
+			<p>商业合作 | 景点推广 | 网站合作 | 加入我们</p>
+			<p>请联系我们，我们将竭诚为您服务。</p>
+			<ul>
+				<li><span></span>福建师范大学光电与信息工程学院</li>
+				<li><span class="ph-no"></span>+00 (123) 456 78 90</li>
+				<li><span class="mail"></span><a href="mailto:example@mail.com">youhao@foxmail.com</a></li>
+			</ul>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<div class="copy-right">
+	<div class="container">
+		<p>Copyright &copy; 2017-2018 www.youhao.cn 游好科技股份有限公司版权所有 ICP证：闽ICP备09009365号-6</p>
+	</div>
+</div>
+	<!--//footer-->
+<script src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+	$(function () {
+		<!-- start-smoth-scrolling-->
+		$(".scroll").click(function (event) {
+			event.preventDefault();
+			$('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+		});
+		<!--smooth-scrolling-of-move-up-->
+		$().UItoTop({easingType: 'easeOutQuart'});
+		$('#close').click(function () {
+			$('.user').show();
+			$('.login').hide();
+		});
+	});
+</script>
+</body>
+</html>

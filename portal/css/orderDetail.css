@@ -1,0 +1,67 @@
+.single-page-info > h5 >span {
+    color: #747474;
+    font-size: 15px;
+    font-weight: normal;
+}
+.member {
+    height: auto;
+    display: inline-block;
+}
+.member img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.label-warning, .label-info {
+    font-size: 1.5em;
+}
+.sngl-title {
+    margin-bottom: 4em;
+}
+.tags {
+    margin-top: 1.3em;
+}
+.tags span {
+    font-size: 0.9em;
+}
+.comment-icons ul li {
+    margin: 0 10px 0 80px;
+}
+.single-page h4 {
+    font-weight: normal;
+    font-style: normal;
+    font-family: inherit;
+}
+.coment-form textarea {
+    font-size: 15px;
+}
+.join input {
+    background: #F3F3F3;
+    padding: .8em 0;
+    border: none;
+    width: 100%;
+    margin-bottom: 1em;
+    font-size: 15px;
+    color: #9C9CA0;
+    letter-spacing: 0.5px;
+    outline: none;
+    transition: .5s all;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+}
+.join input[type="submit"]:hover {
+    color: #fff;
+    background: #5F9EA0;
+    outline: none;
+}
+.comment-icons {
+    margin: 2.5em 0 1em 0;
+}
+.sweet-alert h2 {
+    margin-top: 1em;
+}
