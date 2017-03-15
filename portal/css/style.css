@@ -2569,3 +2569,12 @@ resize: none;
 .about {
   text-indent: 2em;
 }
+.submit-warn {
+  color: #ED4D1E;
+  font-size: 1.15em;
+  float: left;
+  line-height: 35px;
+}
+span.submit-success {
+  color : #42E4d8;
+}

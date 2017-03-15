@@ -11,12 +11,14 @@ module.exports = function (grunt) {
          * */
         API_NAME = {
             portal:'/portal/web',
-            admin:'/admin/web'
+            admin:'/admin/web',
+            front:'/front/web'
         },
         proxyRewrite = {
             '^/portal/web/login': '/web/login/',
             '^/portal/web/': '/web/portal/',
-            '^/admin/web/': '/web/admin/'
+            '^/admin/web/': '/web/admin/',
+            '^/front/web/': '/web/front/'
         },
         //appConfig = {
         //    portal: 'portal',
@@ -68,7 +70,7 @@ module.exports = function (grunt) {
                     port: '9001',
                     hostname: 'localhost',
                     protocol: 'http',
-                    open: true,
+                    open: false,
                     base: {
                         path: './',
                         options: {

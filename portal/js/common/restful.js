@@ -1,7 +1,7 @@
 ;
-define(['jquery', 'sweetAlert'], function () {
+define(['jq', 'sweetAlert'], function () {
     var $ajax = $.ajax;
-    var alertType = {
+    var toastType = {
         warning: 'warning',
         success: 'success',
         error: 'error',
@@ -9,42 +9,54 @@ define(['jquery', 'sweetAlert'], function () {
         input: 'input'
     };
 
-    function http(url, param, action, fun) {
+    /**
+     *
+     * @param url
+     * @param param
+     * @param fun
+     * @returns {*}
+     */
+    function http(url, param, fun) {
         return $ajax({
-            type: action,
-            url: restUrl(url, param.data),
-            async: param.async,
-            data: param.filter.serialize(),
+            type: param.action,
+            url: url+'?'+new Date().valueOf(),
+            async: !param.sync,
+            data: param.data,
             dataType: "json",
             success: function (data, textStatus) {
-                if (data.status == true) {
-                    fun(data);
-                } else {
-                    alert(data.info, alertType.warning);
-                }
+                fun(data);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('网络请求异常', alertType.error);
+                toast('网络请求异常', toastType.error);
+            },
+            statusCode: {
+                404: function () {
+                    toast('页面不存在啊兄弟', toastType.error); //之后改成跳转到404页面
+                },
+                401: function () {
+                    toast('还没登录呢少年', toastType.warning); //之后改成跳转到登录页面
+                }
             }
         });
     }
 
-    function restUrl(url, data) {
-        for (var prop in data) {
+    function restUrl(url, target, filter) {
+        for (var prop in target) {
             url += '/' + prop;
-            if (data[prop] instanceof Array) {
-                for (var item in data[prop]) {
+            if (target[prop] instanceof Array) {
+                for (var item in target[prop]) {
                     url += '/' + item;
                 }
             } else {
-                url += '/' + data[prop];
+                url += '/' + target[prop];
             }
         }
-        return encodeURIComponent(url);
+        return encodeURIComponent(url + '?' + filter.serialize());
     }
 
-    function alert(text, type) {
+    function toast(text, type) {
         swal({
+            title:"",
             text: text,
             type: type,
             showConfirmButton: true,
@@ -53,7 +65,23 @@ define(['jquery', 'sweetAlert'], function () {
         });
     }
 
+
+    var method = {
+        GET:"GET", //查询
+        POST:"POST", //创建
+        PUT:"PUT", //更新
+        DELETE:"DELETE" //删除
+    };
+
+    var exampleParam = {
+        sync: true,
+        action: method.GET,
+        data:"what you'll send"
+    };
+
+
     return {
+        method:method,
         http: http
     }
 });
