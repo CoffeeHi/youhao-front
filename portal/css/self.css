@@ -35,7 +35,7 @@
 .sweet-alert h2 {
     margin-top: 1em;
 }
-/*个人中心*/
+/*锟斤拷锟斤拷锟斤拷锟斤拷*/
 .list-group a.item-active {
     background-color: #5F9EA0;
     color: #fff;
@@ -109,7 +109,7 @@
     font-weight: 500;
     line-height: 30px;
 }
-.signature {
+.sig {
     margin-left: 12px;
     font-size: 18px;
     white-space: nowrap;
@@ -142,16 +142,18 @@
     color: #42E4d8;
     border: 1px solid #42E4d8;
 }
-#locationInput, #careerInput {
+.userInput {
+    border-radius: 0px;
     width: 320px;
     display: inline-block;
 }
-#introduceInput {
+#introInput {
+    border-radius: 0px;
     width: 320px;
     resize: none;
     display: inline-block;
 }
-/*我的消息*/
+/*锟揭碉拷锟斤拷息*/
 ul.pagination {
     margin-top: 1em;
 }
@@ -163,15 +165,15 @@ ul.pagination {
     box-shadow: 0px 4px 5px rgba(0,37,55,.05);
 }
 .msg-type-sys {
-    /*系统消息*/
+    /*系统锟斤拷息*/
     color: #286090;
  }
 .msg-type-date {
-    /*社交消息*/
+    /*锟界交锟斤拷息*/
     color: #f0ad4e;
 }
 .msg-type-tour {
-    /*旅单消息*/
+    /*锟矫碉拷锟斤拷息*/
     color: #5bc0de;
 }
 .msg .col-sm-2 a {

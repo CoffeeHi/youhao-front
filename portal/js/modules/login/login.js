@@ -1,14 +1,18 @@
 ;
-define(['restful', 'common', 'cookie'], function (restful, common, cookie) {
+define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 'template/login/loginInfo', 'template/login/modal'], function (restful, base, cookie, template, loginInfo) {
 
     var http = restful.http;
     var method = restful.method;
-    var codeType = common.codeType;
+    var codeType = base.codeType;
     var setCookie = cookie.setCookie;
+    var getCookie = cookie.getCookie;
     var LOG_PASS =false; //登录验证正确
     var REG_PASS =false; //注册验证正确
     var regUrl = "web/login/register/account/";
     var logUrl = "web/login/login/front/";
+    var chkUrl = "web/login/login/frontCheck/";
+    var loginInfo = loginInfo.toString;
+    var render = template.compile(loginInfo);
 
     //加载验证码
     (function initValidateCode() {
@@ -210,14 +214,8 @@ define(['restful', 'common', 'cookie'], function (restful, common, cookie) {
                     $('#regWarn').text('注册成功，请登录...').addClass('submit-success');
                     setTimeout(function () {
                         $('#logTab').trigger('click');
-                        //清除表单数据
-                        $('#regPass').val('');
-                        $('#regNum').val('');
-                        $('#regValiText').val('');
-                        $('#logValiImg').hide();
-                        //清除校验提示
-                        $('#reg .input-warn').html('');
-                        $('#regWarn').text('');
+                        clearRegForm();
+                        clearLoginForm();
                     },2000);
                 }else {
                     $('#regWarn').text(o.info).removeClass('submit-success');
@@ -235,15 +233,109 @@ define(['restful', 'common', 'cookie'], function (restful, common, cookie) {
             var restUrl = logUrl + $('#logNum').val() + '/' + $('#logPass').val();
             http(restUrl, {action: method.GET}, function (o) {
                 if(o.status){
-                    $('#logWarn').text('登录成功！').addClass('submit-success');
+                    $('#logWarn').text('登录成功').addClass('submit-success');
+                    setTimeout(function () {
+                        $('#logCloseBtn').trigger('click');
+                        var html = render({loginInfo : o.info, haveLogin:true});
+                        if($('#toLogin').length == 0){
+                            $('.social-icons').after(html);
+                        }else{
+                            $('#toLogin').replaceWith(html);
+                        }
+                    }, 1500);
                     for(var a in o.info){
                         setCookie(a, o.info[a], 1);
                     }
-                    console.log(cookie.getCookie('userImage'));
                 }else {
                     $('#logWarn').text(o.info).removeClass('submit-success');
                 }
             });
         }
     });
+
+
+    //验证是否是否已登录
+    function checkLogin(){
+        var userId = getCookie('userId');
+        http(chkUrl, {action: method.GET}, function (o) {
+            if(o.status){
+                if($('.user').length == 0){
+                    var html = render({loginInfo : o.info, haveLogin:true});
+                    if($('#toLogin').length == 0){
+                        $('.social-icons').after(html);
+                    }else{
+                        $('#toLogin').replaceWith(html);
+                    }
+                    for(var a in o.info){
+                        setCookie(a, o.info[a], 1);
+                    }
+                }
+            }else {
+                if($('#toLogin').length == 0){
+                    var html = render({haveLogin:false});
+                    if($('.user').length == 0){
+                        $('.social-icons').after(html);
+                    }else {
+                        $('.user').replaceWith(html);
+                    }
+                }
+            }
+        });
+    }
+    checkLogin();
+    //setInterval(function(){
+    //    checkLogin();
+    //}, 10000);
+
+    //刷新用户信息
+    function flushLogin(){
+        var userId = getCookie('userId');
+        http(chkUrl, {action: method.GET}, function (o) {
+            if (o.status) {
+                var html = render({loginInfo: o.info, haveLogin: true});
+                $('.user').length == 1 && $('.user').replaceWith(html);
+                for (var a in o.info) {
+                    setCookie(a, o.info[a], 1);
+                }
+            }
+        });
+    }
+
+    $('#logCloseBtn').on('click', function () {
+       clearLoginForm();
+        clearRegForm();
+    });
+
+    $('#regCloseBtn').on('click', function () {
+        clearRegForm();
+        clearLoginForm();
+    });
+
+    //清除登录表单
+    function clearLoginForm(){
+        //清除表单数据
+        $('#logPass').val('');
+        $('#logNum').val('');
+        $('#logValiText').val('');
+        $('#logValiImg').hide();
+        //清除校验提示
+        $('#log .input-warn').html('');
+        $('#logWarn').text('');
+    }
+
+    //清除注册表单
+    function clearRegForm(){
+        //清除表单数据
+        $('#regPass').val('');
+        $('#regNum').val('');
+        $('#regValiText').val('');
+        $('#regValiImg').hide();
+        //清除校验提示
+        $('#reg .input-warn').html('');
+        $('#regWarn').text('');
+    }
+
+    return {
+        flushLogin:flushLogin
+    }
 });

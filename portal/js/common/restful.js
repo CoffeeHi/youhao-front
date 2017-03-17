@@ -1,5 +1,5 @@
 ;
-define(['jq', 'sweetAlert'], function () {
+define(['jq'], function () {
     var $ajax = $.ajax;
     var toastType = {
         warning: 'warning',
@@ -21,20 +21,21 @@ define(['jq', 'sweetAlert'], function () {
             type: param.action,
             url: url+'?'+new Date().valueOf(),
             async: !param.sync,
-            data: param.data,
+            data: JSON.stringify(param.data), //配合后端的@RequestBody注解
             dataType: "json",
+            contentType:"application/json",
             success: function (data, textStatus) {
                 fun(data);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                toast('网络请求异常', toastType.error);
+                //todo 会和登录页冲突以后要修改
             },
             statusCode: {
                 404: function () {
-                    toast('页面不存在啊兄弟', toastType.error); //之后改成跳转到404页面
+                    //todo 之后改成跳转到404页面
                 },
                 401: function () {
-                    toast('还没登录呢少年', toastType.warning); //之后改成跳转到登录页面
+                    //之后改成跳转到登录页面
                 }
             }
         });
@@ -54,7 +55,7 @@ define(['jq', 'sweetAlert'], function () {
         return encodeURIComponent(url + '?' + filter.serialize());
     }
 
-    function toast(text, type) {
+    function toast(text, type, func) {
         swal({
             title:"",
             text: text,
@@ -62,6 +63,8 @@ define(['jq', 'sweetAlert'], function () {
             showConfirmButton: true,
             confirmButtonText: '确定',
             confirmButtonClass: "btn-default"
+        }, function () {
+            func();
         });
     }
 

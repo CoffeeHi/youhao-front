@@ -6,7 +6,7 @@
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/self.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/sweetalert.css" type="text/css" rel="stylesheet" >
+    <link href="css/sweetalert.css" type="text/css" rel="stylesheet">
     <!-- Custom Theme files -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -21,86 +21,6 @@
     <!-- //Custom Theme files -->
 </head>
 <body>
-<!--Modal-->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div>
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#log" id="logTab" aria-controls="log" role="tab"
-                                                                  data-toggle="tab">登录</a></li>
-                        <li role="presentation"><a href="#reg" id="regTab" aria-controls="reg" role="tab"
-                                                   data-toggle="tab">注册</a></li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" aria-labelledby="log-tab" id="log">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="logNum" class="col-sm-2 control-label">账号</label>
-
-                                    <div class="col-sm-6">
-                                        <input type="email" class="form-control" id="logNum" placeholder="邮箱/手机号">
-                                    </div>
-                                    <label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="logPass" class="col-sm-2 control-label">密码</label>
-
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control" id="logPass" placeholder="大于6位">
-                                    </div>
-                                    <label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> 记住密码
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">登录</button>
-                                <button type="button" id="close" class="btn btn-default" data-dismiss="modal">关闭
-                                </button>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" aria-labelledby="reg-tab" id="reg">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="logNum" class="col-sm-2 control-label">账号</label>
-
-                                    <div class="col-sm-6">
-                                        <input type="email" class="form-control" id="regNum" placeholder="邮箱/手机号">
-                                    </div>
-                                    <label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="logPass" class="col-sm-2 control-label">密码</label>
-
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control" id="regPass" placeholder="大于6位">
-                                    </div>
-                                    <label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
-                                </div>
-                            </form>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">注册</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!--navigation-->
 <div class="top-nav">
     <nav class="navbar navbar-default">
@@ -130,27 +50,6 @@
                         <li><a href="#" class="fb"></a></li>
                         <li><a href="#" class="gg"></a></li>
                     </ul>
-                </div>
-                <div class="user">
-                    <ul class="nav nav-pills">
-                        <li>
-                            <div class="dropdown-toggle"><a>陈祥</a>
-                                <img src="images/head4.jpg" style="width: 30px;height: 30px; " alt="..."
-                                     class="img-rounded">
-                                <b class="caret"></b>
-                            </div>
-                            <ul id="user-menu" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的消息</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的旅单</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">个人中心</a></li>
-                                <li role="presentation" class="divider"></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">退出登录</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="login">
-                    <a href="#" data-toggle="modal" data-target="#modal">登录</a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -185,7 +84,7 @@
             </ol>
         </div>
         <div id="changePage" class="col-md-8 single-page-left">
-            <div id="myMsg" style="display: none">
+            <div id="userMsg" style="display: none">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#allMsg" aria-controls="allMsg" role="tab"
@@ -200,14 +99,15 @@
                             <!--系统消息-->
                             <div class="msg">
                                 <div>
-                                <div class="col-sm-2">
-                                    <span class="msg-type-sys glyphicon glyphicon-volume-up" aria-hidden="true"></span>
-                                    <a class="msg-type-sys" href="javascript:;">系统消息</a>
-                                </div>
-                                <div class="msg-content col-sm-8">
-                                    <span  class="msg-content-item">陈祥，</span>
-                                    <span  class="msg-content-item">欢迎您加入游好大家庭！</span>
-                                </div>
+                                    <div class="col-sm-2">
+                                        <span class="msg-type-sys glyphicon glyphicon-volume-up"
+                                              aria-hidden="true"></span>
+                                        <a class="msg-type-sys" href="javascript:;">系统消息</a>
+                                    </div>
+                                    <div class="msg-content col-sm-8">
+                                        <span class="msg-content-item">陈祥，</span>
+                                        <span class="msg-content-item">欢迎您加入游好大家庭！</span>
+                                    </div>
                                     <button class="msg-detail">查看</button>
                                 </div>
                                 <div class="clearfix"></div>
@@ -220,7 +120,7 @@
                                         <a class="msg-type-date" href="javascript:;">社交消息</a>
                                     </div>
                                     <div class="msg-content col-sm-8">
-                                        <span  class="msg-content-item">刘德华</span>
+                                        <span class="msg-content-item">刘德华</span>
                                         <span class="msg-content-item">评论了</span>
                                         <span class="msg-content-item">你的《<a href="javascript:;">日志</a>》</span>
                                     </div>
@@ -239,7 +139,7 @@
                                         <a class="msg-type-tour" href="javascript:;">旅单消息</a>
                                     </div>
                                     <div class="msg-content col-sm-8">
-                                        <span  class="msg-content-item">刘德华</span>
+                                        <span class="msg-content-item">刘德华</span>
                                         <span class="msg-content-item">加入了</span>
                                         <span class="msg-content-item">你的旅单《<a href="javascript:;">厦门大学</a>》</span>
                                     </div>
@@ -290,11 +190,12 @@
                                 <div class="msg">
                                     <div>
                                         <div class="col-sm-2">
-                                            <span class="msg-type-tour glyphicon glyphicon-plane" aria-hidden="true"></span>
+                                            <span class="msg-type-tour glyphicon glyphicon-plane"
+                                                  aria-hidden="true"></span>
                                             <a class="msg-type-tour" href="javascript:;">旅单消息</a>
                                         </div>
                                         <div class="msg-content col-sm-8">
-                                            <span  class="msg-content-item">刘德华</span>
+                                            <span class="msg-content-item">刘德华</span>
                                             <span class="msg-content-item">加入了</span>
                                             <span class="msg-content-item">你的旅单《<a href="javascript:;">厦门大学</a>》</span>
                                         </div>
@@ -305,7 +206,8 @@
                                 <div class="msg">
                                     <div>
                                         <div class="col-sm-2">
-                                            <span class="msg-type-tour glyphicon glyphicon-plane" aria-hidden="true"></span>
+                                            <span class="msg-type-tour glyphicon glyphicon-plane"
+                                                  aria-hidden="true"></span>
                                             <a class="msg-type-tour" href="javascript:;">旅单消息</a>
                                         </div>
                                         <div class="msg-content col-sm-8">
@@ -340,14 +242,64 @@
                     </div>
                 </div>
             </div>
+            <div class="info" id="userInfo" style="display: none">
+                <div class="info-cover">
+                    <button class="info-cover-edit">编辑封面图片</button>
+                    <div class="info-cover-img">
+                        <img src="images/banner1.jpg" alt=""/>
+                    </div>
+                </div>
+                <div class="info-detail">
+                    <div class="info-detail-headimg">
+                        <img id="image" src="images/head.png" alt=""/>
+                    </div>
+                    <div class="info-detail-about">
+                        <div class="info-detail-about-head rich-text" id="nameSig">
+                            <span class="name" id="name"></span><span class="sig" id="sig"></span>
+                        </div>
+                        <div class="info-detail-about-content">
+                            <div class="content-item"  id="editName" style="display: none">
+                                <span class="content-label">用户名</span>
+                                <input type="text" class="form-control userInput" id="nameInput" placeholder="你的昵称">
+                            </div>
+                            <div class="content-item"  id="editSig" style="display:none">
+                                <span class="content-label">签名</span>
+                                <input type="text" class="form-control userInput" id="sigInput" placeholder="个性签名">
+                            </div>
+                            <div class="content-item">
+                                <span class="content-label">居住地</span>
+                                <span id="addr"></span>
+                                <input type="text" class="form-control userInput" style="display: none;" id="addrInput"
+                                       placeholder="你住哪儿">
+                            </div>
+                            <div class="content-item">
+                                <span class="content-label">所在行业</span>
+                                <span id="job"></span>
+                                <input type="text" class="form-control userInput" style="display: none" id="jobInput"
+                                       placeholder="你现在做啥">
+                            </div>
+                            <div class="content-item form-inline">
+                                <span class="content-label">个人简介</span>
+                                <span id="intro"></span>
+                                <textarea id="introInput" style="display: none" class="form-control" rows="3"
+                                          placeholder="简要介绍下自己"></textarea>
+                            </div>
+                            <button id="editInfo" class="info-detail-about-edit">编辑</button>
+                            <button id="saveInfo" class="info-detail-about-edit" style="display: none">保存</button>
+                        </div>
+                    </div>
+                    <div class="info-detail-edit"></div>
+                </div>
+            </div>
         </div>
         <div class="col-md-4 single-page-right">
             <div class="category">
                 <h4>我的消息</h4>
+
                 <div class="list-group">
-                    <a href="javascript:;" class="list-group-item item-active">我的消息</a>
-                    <a href="javascript:;" class="list-group-item">我的旅单</a>
-                    <a href="javascript:;" class="list-group-item">个人中心</a>
+                    <a href="javascript:;" id="myMsg" class="list-group-item">我的消息</a>
+                    <a href="javascript:;" id="myTour" class="list-group-item">我的旅单</a>
+                    <a href="javascript:;" id="myInfo" class="list-group-item">个人中心</a>
                 </div>
             </div>
             <div class="comments">

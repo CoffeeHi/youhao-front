@@ -3,37 +3,21 @@ require.config({
     paths: {
         'jq': 'plugins/jquery-1.11.2.min',
         "domReady": 'plugins/ready.min',
-        'moveTop': 'plugins/move-top',
-        'easing': 'plugins/easing',
-        'bootstrap': 'plugins/bootstrap.min',
         'resp': 'plugins/responsiveslides.min',
+
+        'login':'modules/login/login',
         'restful': 'common/restful',
-        'common': 'common/common',
-        'cookie': 'common/cookie',
-        'jqCookie':'plugins/jquery.cookie',
-        'sweetAlert':'plugins/sweetalert.min',
-        'login':'modules/login/login'
+        'top':'common/top'
 
     },
     shim: {
-        'moveTop': ['jq'],
-        'easing': ['jq'],
-        'bootstrap': ['jq'],
         'resp': ['jq']
     },
     packages: [],
     waitSeconds: 0,
     callback: function () {
-        require(['domReady', 'resp', 'moveTop', 'easing', 'bootstrap','sweetAlert','login'], function () {
-            (function moveSlowly() {
-                <!-- start-smoth-scrolling-->
-                $(".scroll").click(function (event) {
-                    event.preventDefault();
-                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
-                });
-                <!--smooth-scrolling-of-move-up-->
-                $().UItoTop({easingType: 'easeOutQuart'});
-            })();
+        require(['domReady', 'jq', 'resp', 'top', 'login'], function () {
+
             //banner
             (function initBanner() {
                 //banner

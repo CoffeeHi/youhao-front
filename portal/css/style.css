@@ -2456,9 +2456,8 @@ ol.breadcrumb li a {
 
 /*??????????*/
 .user {
-  display: none;
   float: right;
-  font-size: 17px;
+  font-size: 1.2em;
   padding-right: 15px;
   line-height: 47px;
 }

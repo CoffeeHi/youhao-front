@@ -1,106 +1,118 @@
 require.config ( {
-    baseUrl: 'js/plugins/',
+    baseUrl: 'js',
     paths      : {
-        'jq': 'jquery-1.11.2.min',
-        "domReady": 'ready.min',
-        'moveTop': 'move-top',
-        'easing': 'easing',
-        'bootstrap': 'bootstrap.min',
-        'sweetAlert':'sweetalert.min'
+        'jq': 'plugins/jquery-1.11.2.min',
+        "domReady": 'plugins/ready.min',
+        'login':'modules/login/login',
+        'top':'common/top',
+        'base':'common/base'
     },
-    shim       : {
-        'moveTop': ['jq'],
-        'easing': ['jq'],
-        'bootstrap': ['jq'],
-        'resp': ['jq']
-    },
+    shim       : {},
     packages   : [],
     waitSeconds: 0,
     callback   : function () {
-        require ( ['domReady','moveTop', 'easing', 'bootstrap','sweetAlert'], function () {
-            var init = function () {
-                <!-- start-smoth-scrolling-->
-                $(".scroll").click(function (event) {
-                    event.preventDefault();
-                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
-                });
-                <!--smooth-scrolling-of-move-up-->
-                $().UItoTop({easingType: 'easeOutQuart'});
-                //测试登录
-                $('#close').click(function () {
-                    $('.user').show();
-                    $('.login').hide();
-                });
-            }();
+        require ( ['domReady', 'jq', 'top', 'login'], function (d, j, t, login) {
+
+            var restful = require('common/restful');
+            var base = require('common/base');
+            var flushLogin = login.flushLogin;
+
+            var http = restful.http;
+            var method = restful.method;
+            var editUrl = 'web/front/user/edit';
+            var detailUrl = 'web/front/user/detail';
+            var editData = {
+                name:'',
+                addr:'',
+                job:'',
+                sig:'',
+                intro:''
+            };
+
+            var param = window.location.search.substr(1);
+            if(param == 1){
+                $('#userMsg').show().siblings('div').hide();
+                $('#myMsg').addClass(' item-active').siblings('.item-active').removeClass('item-active');
+            }else if(param == 2){
+
+            }else if(param == 3){
+                $('#userInfo').show().siblings('div').hide();
+                $('#myInfo').addClass(' item-active').siblings('.item-active').removeClass('item-active');
+                getUserInfo();
+            }
+
             /*右边导航*/
             $('.list-group a').click(function () {
                 $('.category h4').html($(this).text());
-                $(this).parent().children('.item-active').removeClass('item-active');
-                $(this).addClass(' item-active');
-                if($(this).text() === '个人中心'){
-                    var selfInfo = ['<div class="info">',
-                        '                <div class="info-cover">',
-                        '                    <button class="info-cover-edit">编辑封面图片</button>',
-                        '                    <div class="info-cover-img">',
-                        '                        <img src="images/banner1.jpg" alt=""/>',
-                        '                    </div>',
-                        '                </div>',
-                        '                <div class="info-detail">',
-                        '                    <div class="info-detail-headimg">',
-                        '                        <img src="images/head4.jpg" alt=""/>',
-                        '                    </div>',
-                        '                    <div class="info-detail-about">',
-                        '                        <div class="info-detail-about-head rich-text">',
-                        '                            <span class="name">陈祥</span><span class="signature">后知后觉</span>',
-                        '                        </div>',
-                        '                        <div class="info-detail-about-content">',
-                        '                            <div class="content-item">',
-                        '                                <span class="content-label">居住地</span>',
-                        '                                <span id="location">福州</span>',
-                        '                                <input type="text" class="form-control" style="display: none;" id="locationInput" placeholder="你现在住哪儿...">',
-                        '                            </div>',
-                        '                            <div class="content-item">',
-                        '                                <span class="content-label">所在行业</span>',
-                        '                                <span id="career">互联网</span>',
-                        '                                <input type="text" class="form-control" style="display: none" id="careerInput" placeholder="你现在做啥...">',
-                        '                            </div>',
-                        '                            <div class="content-item form-inline">',
-                        '                                <span class="content-label">个人简介</span>',
-                        '                                <span id="introduce">老司机</span>',
-                        '                                <textarea id="introduceInput" style="display: none" class="form-control" rows="3" placeholder="简要介绍下自己..."></textarea>',
-                        '                                </div>',
-                        '                            <button id="editInfo" class="info-detail-about-edit">编辑</button>',
-                        '                            <button id="saveInfo" class="info-detail-about-edit" style="display: none">保存</button>',
-                        '                        </div>',
-                        '                    </div>',
-                        '                    <div class="info-detail-edit"></div>',
-                        '                </div>',
-                        '            </div>'].join("");
-                    $('#changePage').html(selfInfo);
-                }else if($(this).text() === '我的消息'){
-                    $('#myMsg').show();
-                }else if($(this).text() === '我的旅单'){
-                    $('#changePage').html('');
+                $(this).addClass(' item-active').siblings('.item-active').removeClass('item-active');
+                if($(this).attr('id') === 'myInfo'){
+                    $('#userInfo').show().siblings('div').hide();
+                }else if($(this).attr('id') === 'myMsg'){
+                    $('#userMsg').show().siblings('div').hide();
+                }else if($(this).attr('id') === 'myTour'){
                 }
             });
+
             /*编辑个人信息*/
-            $('.single-page-left').on('click', '#editInfo', function () {
+            $('#editInfo').on('click', function () {
                 $(this).hide();
                 $('#saveInfo').show();
-//            展现输入框
-                $('#locationInput').val($('#location').text()).show();
-                $('#careerInput').val($('#career').text()).show();
-                $('#introduceInput').val($('#introduce').text()).show();
-//            隐藏数据
-                $('#career').hide();
-                $('#location').hide();
-                $('#introduce').hide();
+            //展现输入框
+                $('#addrInput').val($('#addr').text()).show();
+                $('#jobInput').val($('#job').text()).show();
+                $('#introInput').val($('#intro').text()).show();
+                $('#editName, #editSig').show();
+                $('#nameInput').val($('.name').text());
+                $('#sigInput').val($('.sig').text());
+                //隐藏用户信息
+                $('#job').hide();
+                $('#addr').hide();
+                $('#intro').hide();
+                $('#nameSig').hide();
             });
-            $('.single-page-left').on('click', '#saveInfo', function () {
-                //ajax
-                $(this).hide();
-                $('#editInfo').show();
+
+            /*保存个人信息*/
+            $('#saveInfo').on('click', function () {
+                editData.addr = $('#addrInput').val();
+                editData.intro = $('#introInput').val();
+                editData.job = $('#jobInput').val();
+                editData.sig = $('#sigInput').val();
+                editData.name = $('#nameInput').val();
+                http(editUrl, {action:method.PUT, sync:true, data:editData}, function (o) {
+                   if(o.status){
+                       $('#nameSig').show();
+                       $('.name').text(editData.name).show();
+                       $('.sig').text(editData.sig).show();
+                       $('#addr').text(editData.addr).show();
+                       $('#job').text(editData.job).show();
+                       $('#intro').text(editData.intro).show();
+                       //隐藏输入框
+                       $('#addrInput').hide();
+                       $('#jobInput').hide();
+                       $('#introInput').hide();
+                       $('#editName, #editSig').hide();
+                       flushLogin();
+                       //保存按钮切换成编辑按钮
+                       $('#saveInfo').hide();
+                       $('#editInfo').show();
+                   }
+                });
             });
+
+            /*获取用户信息*/
+            function getUserInfo(){
+                http(detailUrl, {action:method.GET}, function (o) {
+                    if(o.status){
+                        var data = o.info;
+                        $('#name').text(data.name);
+                        $('#sig').text(data.sig);
+                        $('#addr').text(data.addr);
+                        $('#job').text(data.job);
+                        $('#intro').text(data.intro);
+                        $('#image').attr('src', data.image);
+                    }
+                });
+            }
         } );
     }
 } );

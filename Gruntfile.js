@@ -10,15 +10,16 @@ module.exports = function (grunt) {
          * 代理模式: API_NAME配置成provider，DEVELOP_MODE配置为 false
          * */
         API_NAME = {
-            portal:'/portal/web',
-            admin:'/admin/web',
-            front:'/front/web'
+            portal:'/portal/web'
+            //admin:'/admin/web',
+            //front:'/front/web'
         },
         proxyRewrite = {
             '^/portal/web/login': '/web/login/',
+            '^/portal/web/front': '/web/front/',
             '^/portal/web/': '/web/portal/',
-            '^/admin/web/': '/web/admin/',
-            '^/front/web/': '/web/front/'
+            '^/admin/web/': '/web/admin/'
+
         },
         //appConfig = {
         //    portal: 'portal',

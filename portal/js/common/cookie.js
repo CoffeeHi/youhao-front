@@ -1,10 +1,10 @@
 ;
-define(['common', 'jq', 'jqCookie'], function (common) {
+define(['common/base', 'jq', 'plugins/jquery.cookie'], function (base) {
     function setCookie(cookieName, cookieValue, expiresNum) {
 
         var options = {
             'path': '/',
-            'domain': common.domain,
+            'domain': base.domain,
             'secure': false,//关闭https传输cookie
             'raw': true,//关闭cookie的自动编码功能
             'expires': expiresNum || 30 //cookie的过期时间，如没有传值默认30天过期
