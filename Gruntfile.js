@@ -9,17 +9,18 @@ module.exports = function (grunt) {
          * 本地模式: API_NAME配置成 api，DEVELOP_MODE配置为 true
          * 代理模式: API_NAME配置成provider，DEVELOP_MODE配置为 false
          * */
-        API_NAME = {
-            portal:'/portal/web'
+        API_NAME = [
+            '/portal/web',
+            '/portal/upload'
             //admin:'/admin/web',
             //front:'/front/web'
-        },
+        ],
         proxyRewrite = {
             '^/portal/web/login': '/web/login/',
             '^/portal/web/front': '/web/front/',
             '^/portal/web/': '/web/portal/',
-            '^/admin/web/': '/web/admin/'
-
+            '^/admin/web/': '/web/admin/',
+            '^/portal/upload': '/upload/'
         },
         //appConfig = {
         //    portal: 'portal',
@@ -94,7 +95,7 @@ module.exports = function (grunt) {
                 //},
                 proxies: [
                     {
-                        context: API_NAME.portal, //想代理的请求
+                        context: API_NAME, //想代理的请求
                         host: 'localhost',
                         port: '8090',
                         https: false,

@@ -7,6 +7,8 @@
     <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/self.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/sweetalert.css" type="text/css" rel="stylesheet">
+    <link href="css/cropper.min.css" type="text/css" rel="stylesheet">
+    <link href="css/uploadUserImg.css" type="text/css" rel="stylesheet">
     <!-- Custom Theme files -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -83,6 +85,7 @@
                 <li class="active">Single-page</li>
             </ol>
         </div>
+
         <div id="changePage" class="col-md-8 single-page-left">
             <div id="userMsg" style="display: none">
                 <!-- Nav tabs -->
@@ -250,8 +253,62 @@
                     </div>
                 </div>
                 <div class="info-detail">
-                    <div class="info-detail-headimg">
-                        <img id="image" src="images/head.png" alt=""/>
+                    <div class="info-detail-headimg" id="crop-avatar">
+                        <!--<div class="container" id="crop-avatar">-->
+
+                            <!-- Current avatar -->
+                            <div class="avatar-view" title="点击修改头像">
+                                <img id="image" src="images/head.png" alt=""/>
+                            </div>
+
+                        <!-- Cropping modal -->
+                        <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <form class="avatar-form" action="web/front/user/upload/userImage" enctype="multipart/form-data" method="post">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" id="uploadClose" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title" style="margin-bottom: 0;" id="avatar-modal-label">修改头像</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Loading state -->
+                                            <div class="loading" style="margin: 0 auto;" aria-label="Loading" role="img" tabindex="-1"></div>
+
+                                            <div class="avatar-body">
+
+                                                <!-- Upload image and data -->
+                                                <div class="avatar-upload">
+                                                    <input type="hidden" class="avatar-src" name="avatar_src">
+                                                    <input type="hidden" class="avatar-data" name="avatar_data">
+                                                    <label for="avatarInput">请选择图像</label>
+                                                    <input type="file" class="avatar-input" accept="image/jpeg,image/png" id="avatarInput" name="avatar_file">
+                                                </div>
+
+                                                <!-- Crop and preview -->
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <div class="avatar-wrapper"></div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="avatar-preview preview-lg"></div>
+                                                        <div class="avatar-preview preview-md"></div>
+                                                        <div class="avatar-preview preview-sm"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row avatar-btns">
+                                                    <div class="col-md-3">
+                                                        <button type="submit" class="btn btn-primary btn-block avatar-save">上传图像</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div><!-- /.modal -->
+
+                      <!--</div>-->
                     </div>
                     <div class="info-detail-about">
                         <div class="info-detail-about-head rich-text" id="nameSig">

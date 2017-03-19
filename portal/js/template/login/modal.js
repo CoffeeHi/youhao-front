@@ -1,5 +1,5 @@
 ;
-define(['jq'], function () {
+define([], function () {
     //登录注册弹窗
     var modal = ['<!--Modal-->',
         '<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">',

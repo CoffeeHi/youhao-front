@@ -11,7 +11,9 @@ require.config({
 
     },
     shim: {
-        'resp': ['jq']
+        'resp': ['jq'],
+        'top':['jq'],
+        'login':['jq']
     },
     packages: [],
     waitSeconds: 0,

@@ -1,5 +1,5 @@
 ;
-define(['jq'], function () {
+define(['jq', 'plugins/sweetalert.min'], function () {
     var $ajax = $.ajax;
     var toastType = {
         warning: 'warning',
@@ -28,14 +28,14 @@ define(['jq'], function () {
                 fun(data);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                //todo 会和登录页冲突以后要修改
+                toast('网络请求异常', toastType.error);//todo 会和登录页冲突以后要修改
             },
             statusCode: {
                 404: function () {
-                    //todo 之后改成跳转到404页面
+                    toast('页面不存在啊兄弟', toastType.error); //todo 之后改成跳转到404页面
                 },
                 401: function () {
-                    //之后改成跳转到登录页面
+                    toast('还没登录呢少年', toastType.warning); //todo 之后改成跳转到登录页面
                 }
             }
         });
@@ -63,8 +63,6 @@ define(['jq'], function () {
             showConfirmButton: true,
             confirmButtonText: '确定',
             confirmButtonClass: "btn-default"
-        }, function () {
-            func();
         });
     }
 

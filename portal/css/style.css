@@ -2467,15 +2467,15 @@ ol.breadcrumb li a {
   padding-right: 5px;
 }
 
-.nav > li .dropdown-menu {
-  margin: 0;
-}
-
 .nav > li:hover .dropdown-menu {
   display: block;
 }
+
 #user-menu {
   font-size: 0.9em;
+  right: 0;
+  left: inherit;
+  margin: 0;
 }
 .login{
   display: inline-block;

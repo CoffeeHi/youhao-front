@@ -11,6 +11,7 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
     var regUrl = "web/login/register/account/";
     var logUrl = "web/login/login/front/";
     var chkUrl = "web/login/login/frontCheck/";
+    var exitUrl = "web/login/login/frontExit"
     var loginInfo = loginInfo.toString;
     var render = template.compile(loginInfo);
 
@@ -180,10 +181,10 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
         validatePass($(this).val().trim(), 1);
     });
     $('#logValiText').on('input propertychange', function () {
-        if($(this).val().length == 0){
+        if($(this).val().trim().length == 0){
             $('#logValiWarn').text(codeWarn.EMPTY);
         }else{
-            ifCodeRight(codeType.LOGIN, $(this).val());
+            ifCodeRight(codeType.LOGIN, $(this).val().trim());
         }
     });
 
@@ -195,27 +196,28 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
         validatePass($(this).val().trim(), codeType.REG);
     });
     $('#regValiText').on('input propertychange', function () {
-        if($(this).val().length == 0){
+        if($(this).val().trim().length == 0){
             $('#regValiWarn').text(codeWarn.EMPTY);
         }else{
-            ifCodeRight(codeType.REG, $(this).val());
+            ifCodeRight(codeType.REG, $(this).val().trim());
         }
     });
 
     //初始化注册按钮
     $('#regBtn').on('click', function () {
-        var rightNum = validateNum($('#regNum').val(), codeType.REG);
-        var rightPass = validatePass($('#regPass').val(), codeType.REG);
-        var rightCode = ifCodeRight(codeType.REG, $('#regValiText').val());
+        var rightNum = validateNum($('#regNum').val().trim(), codeType.REG);
+        var rightPass = validatePass($('#regPass').val().trim(), codeType.REG);
+        var rightCode = ifCodeRight(codeType.REG, $('#regValiText').val().trim());
         if(rightCode && rightNum && rightPass){
-            var restUrl = regUrl + $('#regNum').val() + '/' + $('#regPass').val() + '/' + codeType.REG;
+            var restUrl = regUrl + $('#regNum').val().trim() + '/' + $('#regPass').val().trim() + '/' + codeType.REG;
             http(restUrl, {action: method.POST}, function (o) {
                 if(o.info == 1){
                     $('#regWarn').text('注册成功，请登录...').addClass('submit-success');
                     setTimeout(function () {
-                        $('#logTab').trigger('click');
-                        clearRegForm();
                         clearLoginForm();
+                        $('#logTab').trigger('click');
+                        $('#logNum').val($('#regNum').val().trim());
+                        clearRegForm();
                     },2000);
                 }else {
                     $('#regWarn').text(o.info).removeClass('submit-success');
@@ -226,11 +228,11 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
 
     //初始化登录按钮
     $('#logBtn').on('click', function () {
-        var rightNum = validateNum($('#logNum').val(), codeType.LOGIN);
-        var rightPass = validatePass($('#logPass').val(), codeType.LOGIN);
-        var rightCode = ifCodeRight(codeType.LOGIN, $('#logValiText').val());
+        var rightNum = validateNum($('#logNum').val().trim(), codeType.LOGIN);
+        var rightPass = validatePass($('#logPass').val().trim(), codeType.LOGIN);
+        var rightCode = ifCodeRight(codeType.LOGIN, $('#logValiText').val().trim());
         if(rightCode && rightNum && rightPass){
-            var restUrl = logUrl + $('#logNum').val() + '/' + $('#logPass').val();
+            var restUrl = logUrl + $('#logNum').val().trim() + '/' + $('#logPass').val().trim();
             http(restUrl, {action: method.GET}, function (o) {
                 if(o.status){
                     $('#logWarn').text('登录成功').addClass('submit-success');
@@ -253,9 +255,8 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
         }
     });
 
-
     //验证是否是否已登录
-    function checkLogin(){
+    (function checkLogin(){
         var userId = getCookie('userId');
         http(chkUrl, {action: method.GET}, function (o) {
             if(o.status){
@@ -269,6 +270,11 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
                     for(var a in o.info){
                         setCookie(a, o.info[a], 1);
                     }
+                    $('#exit').click(function () { //绑定退出按钮
+                        http(exitUrl, {action: method.DELETE}, function () {
+                            location.reload();
+                        });
+                    });
                 }
             }else {
                 if($('#toLogin').length == 0){
@@ -281,8 +287,9 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
                 }
             }
         });
-    }
-    checkLogin();
+    }());
+
+    //checkLogin();
     //setInterval(function(){
     //    checkLogin();
     //}, 10000);
@@ -290,7 +297,7 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
     //刷新用户信息
     function flushLogin(){
         var userId = getCookie('userId');
-        http(chkUrl, {action: method.GET}, function (o) {
+        http(chkUrl, {action: method.GET, sync: true}, function (o) {
             if (o.status) {
                 var html = render({loginInfo: o.info, haveLogin: true});
                 $('.user').length == 1 && $('.user').replaceWith(html);

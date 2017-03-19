@@ -5,16 +5,25 @@ require.config ( {
         "domReady": 'plugins/ready.min',
         'login':'modules/login/login',
         'top':'common/top',
-        'base':'common/base'
+        'base':'common/base',
+        'upload':'modules/self/uploadUserImage',
+        'cropper':'plugins/cropper.min'
     },
-    shim       : {},
+    shim       : {
+        'top':['jq'],
+        'login':['jq'],
+        'upload':['jq','cropper'],
+        'cropper':['jq']
+    },
     packages   : [],
     waitSeconds: 0,
     callback   : function () {
-        require ( ['domReady', 'jq', 'top', 'login'], function (d, j, t, login) {
+        require ( ['domReady', 'jq', 'top', 'login', 'upload', 'cropper'], function (d, j, t, login) {
 
             var restful = require('common/restful');
             var base = require('common/base');
+            //var base = require('cropper');
+            //var base = require('upload');
             var flushLogin = login.flushLogin;
 
             var http = restful.http;
@@ -73,11 +82,11 @@ require.config ( {
 
             /*保存个人信息*/
             $('#saveInfo').on('click', function () {
-                editData.addr = $('#addrInput').val();
-                editData.intro = $('#introInput').val();
-                editData.job = $('#jobInput').val();
-                editData.sig = $('#sigInput').val();
-                editData.name = $('#nameInput').val();
+                editData.addr = $('#addrInput').val().trim();
+                editData.intro = $('#introInput').val().trim();
+                editData.job = $('#jobInput').val().trim();
+                editData.sig = $('#sigInput').val().trim();
+                editData.name = $('#nameInput').val().trim();
                 http(editUrl, {action:method.PUT, sync:true, data:editData}, function (o) {
                    if(o.status){
                        $('#nameSig').show();

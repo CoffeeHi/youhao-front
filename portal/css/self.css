@@ -79,11 +79,11 @@
     background-color: #fff;
     border-radius: 4px;
 }
-.info-detail-headimg img {
-    z-index: 5;
-    width: 150px;
-    height: 150px;
-}
+/*.info-detail-headimg img {*/
+    /*z-index: 5;*/
+    /*width: 150px;*/
+    /*height: 150px;*/
+/*}*/
 .info-detail {
     position: relative;
 }
