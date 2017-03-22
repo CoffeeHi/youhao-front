@@ -4,6 +4,7 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
     var http = restful.http;
     var method = restful.method;
     var codeType = base.codeType;
+    var numType = base.numType;
     var setCookie = cookie.setCookie;
     var getCookie = cookie.getCookie;
     var LOG_PASS =false; //登录验证正确
@@ -209,7 +210,7 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
         var rightPass = validatePass($('#regPass').val().trim(), codeType.REG);
         var rightCode = ifCodeRight(codeType.REG, $('#regValiText').val().trim());
         if(rightCode && rightNum && rightPass){
-            var restUrl = regUrl + $('#regNum').val().trim() + '/' + $('#regPass').val().trim() + '/' + codeType.REG;
+            var restUrl = regUrl + $('#regNum').val().trim() + '/' + $('#regPass').val().trim() + '/' + ($('#regNum').val().trim().indexOf('@') != -1 ? numType.EMAIL : numType.PHONE);
             http(restUrl, {action: method.POST}, function (o) {
                 if(o.info == 1){
                     $('#regWarn').text('注册成功，请登录...').addClass('submit-success');
@@ -256,8 +257,7 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
     });
 
     //验证是否是否已登录
-    (function checkLogin(){
-        var userId = getCookie('userId');
+    function checkLogin(){
         http(chkUrl, {action: method.GET}, function (o) {
             if(o.status){
                 if($('.user').length == 0){
@@ -267,15 +267,18 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
                     }else{
                         $('#toLogin').replaceWith(html);
                     }
-                    for(var a in o.info){
-                        setCookie(a, o.info[a], 1);
-                    }
-                    $('#exit').click(function () { //绑定退出按钮
-                        http(exitUrl, {action: method.DELETE}, function () {
-                            location.reload();
-                        });
-                    });
+                }else if($('.user').length > 0){
+                    var html = render({loginInfo: o.info, haveLogin: true});
+                    $('.user').length == 1 && $('.user').replaceWith(html);
                 }
+                for(var a in o.info){
+                    setCookie(a, o.info[a], 1);
+                }
+                $('#exit').click(function () { //绑定退出按钮
+                    http(exitUrl, {action: method.DELETE}, function () {
+                        location.reload();
+                    });
+                });
             }else {
                 if($('#toLogin').length == 0){
                     var html = render({haveLogin:false});
@@ -287,26 +290,21 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
                 }
             }
         });
-    }());
+    }
 
-    //checkLogin();
+    checkLogin();
     //setInterval(function(){
     //    checkLogin();
     //}, 10000);
 
     //刷新用户信息
-    function flushLogin(){
-        var userId = getCookie('userId');
-        http(chkUrl, {action: method.GET, sync: true}, function (o) {
-            if (o.status) {
-                var html = render({loginInfo: o.info, haveLogin: true});
-                $('.user').length == 1 && $('.user').replaceWith(html);
-                for (var a in o.info) {
-                    setCookie(a, o.info[a], 1);
-                }
-            }
-        });
-    }
+    //function flushLogin(){
+    //    http(chkUrl, {action: method.GET, sync: true}, function (o) {
+    //        if (o.status) {
+    //
+    //        }
+    //    });
+    //}
 
     $('#logCloseBtn').on('click', function () {
        clearLoginForm();
@@ -343,6 +341,6 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
     }
 
     return {
-        flushLogin:flushLogin
+        checkLogin:checkLogin
     }
 });

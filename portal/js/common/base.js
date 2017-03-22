@@ -7,9 +7,16 @@ define([], function () {
         FORGET:3 //忘记密码
     };
 
+    //账号类型
+    var numType = {
+        EMAIL : 1,
+        PHONE : 2
+    };
+
     var domain = 'youhao.cn';
     return {
         codeType: codeType,
-        domain: domain
+        domain: domain,
+        numType: numType
     }
 });

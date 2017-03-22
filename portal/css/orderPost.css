@@ -21,9 +21,6 @@
 .sngl-title {
     margin-bottom: 4em;
 }
-.comment-icons ul li {
-    /*margin: 0 10px 0 80px;*/
-}
 .single-page h4 {
     font-weight: normal;
     font-style: normal;
@@ -59,7 +56,7 @@
 .sweet-alert h2 {
     margin-top: 1em;
 }
-/*·¢²¼*/
+/*ï¿½ï¿½ï¿½ï¿½*/
 .icon-right-name p {
     float: left;
     width: 50%;
@@ -78,14 +75,11 @@
     font-size           : 11pt;
     font-weight         : normal;
 }
-.linkway input {
-    margin-bottom: 15px;
-}
 #guides, #competers, #tolink {
     display: none;
 }
 .comment-icons {
-    padding: 1.5em 2.0em;
+    padding: 1.0em 2.0em;
 }
 .tags {
     float: left;
@@ -114,4 +108,17 @@
 }
 #guideLabel {
     display: none;
+}
+.content .btn.btn-default {
+    font-size: small;
+     border: 1px solid #fff;
+     background-color: #fff;
+     color: #5e5e5e;
+}
+.panel-body p{
+    color: #000;
+    font-size: inherit;
+}
+.tour-info .form-control {
+    border-radius: 0;
 }

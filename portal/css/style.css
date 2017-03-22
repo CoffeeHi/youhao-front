@@ -2498,7 +2498,9 @@ ol.breadcrumb li a {
   color: #fff;
   font-size: 1.1em;
 }
-/*//??????????*/
+.form-control[readonly] {
+  background-color: transparent;
+}
 /*阻止可拉伸的输入区*/
 textarea {
 resize: none;
@@ -2536,7 +2538,7 @@ resize: none;
   white-space: nowrap;
 }
 /*登录注册弹窗样式*/
-.modal-footer {
+#log .modal-footer, #reg .modal-footer {
   padding: 15px 15px 0 15px;
 }
 .form-horizontal {

@@ -4,10 +4,11 @@
     <title>Single-page</title>
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/zyupload-1.0.0.css" type="text/css">
+    <!--<link rel="stylesheet" href="css/zyupload-1.0.0.css" type="text/css">-->
     <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/orderPost.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/sweetalert.css" type="text/css" rel="stylesheet" >
+    <link href="css/summernote.css" type="text/css" rel="stylesheet" >
     <!-- Custom Theme files -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -22,86 +23,6 @@
     <!-- //Custom Theme files -->
 </head>
 <body>
-<!--Modal-->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div>
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#log" id="logTab" aria-controls="log" role="tab"
-                                                                  data-toggle="tab">登录</a></li>
-                        <li role="presentation"><a href="#reg" id="regTab" aria-controls="reg" role="tab"
-                                                   data-toggle="tab">注册</a></li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" aria-labelledby="log-tab" id="log">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="logNum" class="col-sm-2 control-label">账号</label>
-
-                                    <div class="col-sm-6">
-                                        <input type="email" class="form-control" id="logNum" placeholder="邮箱/手机号">
-                                    </div>
-                                    <label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="logPass" class="col-sm-2 control-label">密码</label>
-
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control" id="logPass" placeholder="大于6位">
-                                    </div>
-                                    <label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> 记住密码
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">登录</button>
-                                <button type="button" id="close" class="btn btn-default" data-dismiss="modal">关闭
-                                </button>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" aria-labelledby="reg-tab" id="reg">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="logNum" class="col-sm-2 control-label">账号</label>
-
-                                    <div class="col-sm-6">
-                                        <input type="email" class="form-control" id="regNum" placeholder="邮箱/手机号">
-                                    </div>
-                                    <label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="logPass" class="col-sm-2 control-label">密码</label>
-
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control" id="regPass" placeholder="大于6位">
-                                    </div>
-                                    <label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
-                                </div>
-                            </form>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">注册</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!--navigation-->
 <div class="top-nav">
     <nav class="navbar navbar-default">
@@ -131,27 +52,6 @@
                         <li><a href="#" class="fb"></a></li>
                         <li><a href="#" class="gg"></a></li>
                     </ul>
-                </div>
-                <div class="user">
-                    <ul class="nav nav-pills">
-                        <li>
-                            <div class="dropdown-toggle"><a>陈祥</a>
-                                <img src="images/head4.jpg" style="width: 30px;height: 30px; " alt="..."
-                                     class="img-rounded">
-                                <b class="caret"></b>
-                            </div>
-                            <ul id="user-menu" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的消息</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的旅单</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">个人中心</a></li>
-                                <li role="presentation" class="divider"></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">退出登录</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="login">
-                    <a href="#" data-toggle="modal" data-target="#modal">登录</a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -187,67 +87,40 @@
         </div>
         <div class="col-md-8 single-page-left">
             <div class="single-page-info">
-                <form class="form-horizontal tour-info">
-                    <div class="form-group type">
-                        <label for="type" class="col-sm-3 control-label">旅单类型：</label>
-                        <div class="col-sm-9">
-                            <select id="type" class="form-control">
-                                <option value=1 selected="selected">组团求约</option>
-                                <option value=2>寻求导游</option>
-                            </select>
+                <form class="form-horizontal tour-info" id="tourForm" method="post">
+                    <div class="form-group">
+                        <label for="target" class="col-sm-2 control-label">目的地：</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="target" id="target" placeholder="你们想去哪儿">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="sight" class="col-sm-3 control-label">目的地：</label>
+                        <label for="dateStart" class="col-sm-2 control-label">旅行时间：</label>
 
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="sight" placeholder="你们想去哪儿">
+                        <div class="col-sm-4 timeRange">
+                            <input type="text" style="width: 100%" readonly class="form-control" name="dateStart" id="dateStart" placeholder="起始时间">
+
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="dateStart" class="col-sm-3 control-label">旅行时间：</label>
-
-                        <div class="col-sm-9 timeRange">
-                            <input type="text" class="form-control" id="dateStart" placeholder="起始时间">
-                            <input type="text" class="form-control" id="dateOver" placeholder="结束时间">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="request" class="col-sm-3 control-label">说明：</label>
-
-                        <div class="col-sm-9 content">
-                            <textarea id="request" class="form-control" rows="3"
-                                      placeholder="你对旅行的期待、要求等..."></textarea>
+                        <div class="col-sm-4 timeRange">
+                            <input type="text" style="width: 100%" readonly class="form-control" name="dateOver" id="dateOver" placeholder="结束时间">
                         </div>
                     </div>
                     <div class="form-group" id="tourists">
-                        <label for="touristNum" id="touristLabel" class="col-sm-3 control-label">约游人数：</label>
-                        <label for="touristNum" id="guideLabel" class="col-sm-3 control-label">带团人数：</label>
-                        <div class="col-sm-9 content">
-                            <input id="touristNum" type="number" max="50" class="form-control" placeholder="≤50"/>
-                        </div>
-                    </div>
-                    <div class="form-group" id="guides">
-                        <label for="guideNum" class="col-sm-3 control-label">导游人数：</label>
-                        <div class="col-sm-9">
-                            <select id="guideNum" class="form-control">
-                                <option value="1" selected="selected">1</option>
-                                <option value="2">2</option>
-                                <option value="2">3</option>
-                                <option value="2">4</option>
-                                <option value="2">5</option>
-                            </select>
+                        <label for="touristNum" id="touristLabel" class="col-sm-2 control-label">约游人数：</label>
+                        <div class="col-sm-4 content">
+                            <input id="touristNum" value="1" type="number" name="touristNum" min="1" max="50" class="form-control" placeholder="≤50"/>
                         </div>
                     </div>
                     <div class="form-group" id="competers">
-                        <label for="competeNum" class="col-sm-3 control-label">抢单人数：</label>
-                        <div class="col-sm-9">
+                        <label for="competeNum" class="col-sm-2 control-label">抢单人数：</label>
+                        <div class="col-sm-10">
                             <input id="competeNum" type="number" max="10" class="form-control" placeholder="≤10"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">费用方式：</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 control-label">费用方式：</label>
+                        <div class="col-sm-10">
                             <label class="radio-inline">
                                 <input type="radio" name="payway" id="cash" checked value="1"> 线下AA
                             </label>
@@ -257,45 +130,53 @@
                             </label>
                         </div>
                     </div>
-                    <!--<div class="form-group">-->
-                        <!--<label class="col-sm-3 control-label">是否告知联系方式：</label>-->
-                        <!--<div class="col-sm-9">-->
-                            <!--<label class="radio-inline">-->
-                                <!--<input type="radio" name="ifLink" id="inlineRadio1" value="1"> 是-->
-                            <!--</label>-->
-                            <!--<label class="radio-inline">-->
-                                <!--<input type="radio" name="ifLink" id="inlineRadio2" checked value="2">-->
-                                <!--否-->
-                            <!--</label>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <div class="form-group linkway">
-                        <label for="linkway" class="col-sm-3 control-label" title="至少1种">任一联系方式：</label>
-                        <div id="linkway" class="col-sm-9">
-                            <input type="text" class="form-control" id="qq" placeholder="QQ">
-                            <input type="text" class="form-control" id="wx" placeholder="微信">
-                            <input type="email" class="form-control" id="email" placeholder="邮箱">
-                            <input type="text" class="form-control" id="phone" placeholder="手机号">
+                    <div class="form-group">
+                        <label for="summernote" class="col-sm-2 control-label">旅行说明：</label>
+                        <!--<input type="hidden" id="content" name="content">-->
+                        <div class="col-sm-10 content">
+                            <div class="summernote" id="summernote" name="description" placeholder="你对旅行的期待、要求等"></div>
                         </div>
                     </div>
-                </form>
-                <div class="comment-icons">
-                    <div id="tags" class="tags col-sm-3">
-                        <!--<span class="label label-primary"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Primary</span>-->
-                        <!--<span class="label label-primary">Primary</span>-->
-                        <!--<span class="label label-primary">Primary</span>-->
+                    <div class="form-group">
+                        <label for="contact" class="col-sm-2 control-label" title="至少1种">联系方式：</label>
+                        <div class="col-sm-2">
+                            <select id="contactType" name="contactType" class="form-control">
+                                <option value=1 selected="selected">QQ</option>
+                                <option value=2>微信</option>
+                                <option value=2>邮箱</option>
+                                <option value=2>手机号</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="contact" class="form-control">
+                        </div>
                     </div>
-                    <div class="addtag col-sm-9">
-                        <input type="text" class="form-control" id="taginfo" maxlength="11" placeholder="给你的旅单加上三个标签吧">
-                        <button type="submit" id="addtag" class="btn btn-primary">+</button>
+                    <div class="form-group">
+                        <label for="cover" class="col-sm-2 control-label" title="至少1种">旅单封面：</label>
+                        <input type="file" style="display: none;" id="cover" accept="image/jpeg,image/png"/>
+                        <input type="hidden" id="coverPath" name="cover" accept="image/jpeg,image/png"/>
+                        <div class="col-sm-4" style="padding-top: 10px;" data-toggle="tooltip" data-placement="bottom" title="点击修改封面图片" >
+                            <img id="coverPrew" src="upload/default/tour/covers/default_cover.jpg" alt=""/>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
+                    <div class="comment-icons">
+                        <div id="tags" class="tags col-sm-4"></div>
+                        <div class="addtag col-sm-5">
+                            <input type="text" style="width: 100%" class="form-control" id="taginfo" maxlength="11" placeholder="给你的旅单加上三个标签吧">
+                        </div>
+                        <button type="button" id="addtag" class="btn btn-primary">+</button>
+                        <div class="clearfix"></div>
+                    </div>
+
+
+                <div class="join">
+                    <input type="submit" value="立即发布">
                 </div>
+                </form>
+                <!--<div id="zyupload" class="zyupload"></div>-->
             </div>
-            <div id="zyupload" class="zyupload"></div>
-            <div class="join">
-                <input type="submit" value="立即发布">
-            </div>
+
+
         </div>
         <div class="col-md-4 single-page-right">
             <div class="category">

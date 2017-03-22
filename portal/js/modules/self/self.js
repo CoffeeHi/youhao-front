@@ -5,7 +5,6 @@ require.config ( {
         "domReady": 'plugins/ready.min',
         'login':'modules/login/login',
         'top':'common/top',
-        'base':'common/base',
         'upload':'modules/self/uploadUserImage',
         'cropper':'plugins/cropper.min'
     },
@@ -24,7 +23,7 @@ require.config ( {
             var base = require('common/base');
             //var base = require('cropper');
             //var base = require('upload');
-            var flushLogin = login.flushLogin;
+            var flushLogin = login.checkLogin;
 
             var http = restful.http;
             var method = restful.method;
@@ -40,11 +39,13 @@ require.config ( {
 
             var param = window.location.search.substr(1);
             if(param == 1){
+                $('#cateName').html($('#myMsg').text());
                 $('#userMsg').show().siblings('div').hide();
                 $('#myMsg').addClass(' item-active').siblings('.item-active').removeClass('item-active');
             }else if(param == 2){
-
+                $('#cateName').html($('#myTour').text());
             }else if(param == 3){
+                $('#cateName').html($('#myInfo').text());
                 $('#userInfo').show().siblings('div').hide();
                 $('#myInfo').addClass(' item-active').siblings('.item-active').removeClass('item-active');
                 getUserInfo();
@@ -52,10 +53,11 @@ require.config ( {
 
             /*右边导航*/
             $('.list-group a').click(function () {
-                $('.category h4').html($(this).text());
+                $('#cateName').html($(this).text());
                 $(this).addClass(' item-active').siblings('.item-active').removeClass('item-active');
                 if($(this).attr('id') === 'myInfo'){
                     $('#userInfo').show().siblings('div').hide();
+                    getUserInfo();
                 }else if($(this).attr('id') === 'myMsg'){
                     $('#userMsg').show().siblings('div').hide();
                 }else if($(this).attr('id') === 'myTour'){

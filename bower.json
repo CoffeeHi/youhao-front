@@ -24,6 +24,7 @@
     "domready": "^1.0.8",
     "jquery-validation": "jquery-validate#^1.16.0",
     "jquery.cookie": "^1.4.1",
-    "artTemplate": "^3.0.1"
+    "artTemplate": "^3.0.1",
+    "summernote": "^0.8.2"
   }
 }

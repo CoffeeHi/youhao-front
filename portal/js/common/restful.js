@@ -1,13 +1,8 @@
 ;
-define(['jq', 'plugins/sweetalert.min'], function () {
+define(['jq', 'common/toast'], function (jq, toast) {
     var $ajax = $.ajax;
-    var toastType = {
-        warning: 'warning',
-        success: 'success',
-        error: 'error',
-        info: 'info',
-        input: 'input'
-    };
+    var toastType = toast.toastType;
+    var toast = toast.toast;
 
     /**
      *
@@ -53,17 +48,6 @@ define(['jq', 'plugins/sweetalert.min'], function () {
             }
         }
         return encodeURIComponent(url + '?' + filter.serialize());
-    }
-
-    function toast(text, type, func) {
-        swal({
-            title:"",
-            text: text,
-            type: type,
-            showConfirmButton: true,
-            confirmButtonText: '确定',
-            confirmButtonClass: "btn-default"
-        });
     }
 
 
