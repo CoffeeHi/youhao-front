@@ -29,19 +29,19 @@ require.config ( {
     packages   : [],
     waitSeconds: 0,
     callback   : function () {
-        require ( ['domReady', 'jq', 'migrate', 'top', 'login', 'datetime', 'datetime-CN',
+        require ( ['domReady', 'jq', 'top', 'login', 'datetime', 'datetime-CN',
         'summernote', 'summernote-CN', 'jq-form'], function () {
 
             var http = require('common/restful').http;
             var method = require('common/restful').method;
-            var base = require('common/base');
+            //var base = require('common/base');
             var toast = require('common/toast').toast;
             var toastDetail = require('common/toast').toastDetail;
             var toastType = require('common/toast').toastType;
 
             var uploadCoverUrl = "web/front/tour/upload/tourImage/2?" + new Date().getTime(); //上传封面图片路径
             var uploadImageUrl = "web/front/tour/upload/tourImage/1?" + new Date().getTime(); //上传说明图片路径
-            var insertTourUrl = "web/front/tour/insert?" + + new Date().getTime();;
+            var tourUrl = "web/front/tour?" + + new Date().getTime();;
 
             var defaultCover = 'upload/default/tour/covers/default_cover.jpg';
             var tourArgs = {
@@ -72,10 +72,10 @@ require.config ( {
                     tourArgs.tags.push($(tags[i]).text());
                 }
                 console.log('提交的旅单', tourArgs);
-                http(insertTourUrl, {action: method.POST, data: tourArgs}, function (resp) {
+                http(tourUrl, {action: method.POST, data: tourArgs}, function (resp) {
                     if(resp.status){
                         toastDetail('发布成功', toastType.success, '查看详情', '继续发布', function () {
-                            console.log(resp.info);
+                            location.href = "orderDetail.html?" + resp.info;
                         }, function () {
                             //$("#tourForm").clearForm();
                             $("#tourForm").resetForm(); //重置表单为初始状态
@@ -84,7 +84,6 @@ require.config ( {
                             $('#summernote').summernote('reset');
                         });
                     }
-                   console.log(resp);
                 });
                 return false;   //阻止表单默认提交
             });

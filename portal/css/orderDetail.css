@@ -65,3 +65,19 @@
 .sweet-alert h2 {
     margin-top: 1em;
 }
+.single-page-info {
+   font-size: 1.1em;
+}
+.single-page-info div {
+margin: 1.5em 0 1em;
+line-height: 1.6em;
+}
+.single-page-info .control-label {
+font-weight: normal;
+color: #5F9EA0;
+}
+#content p{
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}

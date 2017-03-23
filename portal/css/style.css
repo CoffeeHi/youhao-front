@@ -870,16 +870,6 @@ ul.pagination li a {
 .sngl-title {
   margin-bottom: 5em;
 }
-.single-page-left  img {
-  width: 100%;
-}
-.single-page-info h5 {
-  font-size: 15px;
-  font-weight: 600;
-  color: #5F9EA0;
-    margin: 1.5em 0 1em;
-  line-height: 1.6em;
-}
 .read-more-grids {
   padding-left: 0 !important;
 }

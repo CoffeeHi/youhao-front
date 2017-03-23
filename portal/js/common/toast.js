@@ -9,7 +9,7 @@ define(['jq', 'plugins/sweetalert.min'], function () {
         input: 'input'
     };
 
-    function toast(text, type, func) {
+    function toast(text, type) {
         swal({
             title:"",
             text: text,
@@ -17,6 +17,18 @@ define(['jq', 'plugins/sweetalert.min'], function () {
             showConfirmButton: true,
             confirmButtonText: '确定',
             confirmButtonClass: "btn-default"
+        });
+    }
+
+    function toastHtml(title, htmlText, imageUrl) {
+        swal({
+            title: title,
+            text: htmlText,
+            imageUrl: imageUrl,
+            html:true,
+            showConfirmButton: true,
+            confirmButtonText: '确定',
+            confirmButtonClass: "btn-info"
         });
     }
 
@@ -52,6 +64,7 @@ define(['jq', 'plugins/sweetalert.min'], function () {
 
     return {
         toast:toast,
+        toastHtml:toastHtml,
         toastDetail:toastDetail,
         toastType: toastType
     }

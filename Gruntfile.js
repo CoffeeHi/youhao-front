@@ -18,8 +18,9 @@ module.exports = function (grunt) {
         proxyRewrite = {
             '^/portal/web/login': '/web/login/',
             '^/portal/web/front': '/web/front/',
+            '^/portal/web/portal': '/web/portal/',
+            '^/portal/web/admin/': '/web/admin/',
             '^/portal/web/': '/web/portal/',
-            '^/admin/web/': '/web/admin/',
             '^/portal/upload': '/upload/'
         },
         //appConfig = {

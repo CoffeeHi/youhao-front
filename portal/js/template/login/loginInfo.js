@@ -8,7 +8,7 @@ define([], function () {
         '                    <ul class="nav nav-pills">',
         '                        <li>',
         '                            <div class="dropdown-toggle" style="padding-bottom: 2px;"><a>{{loginInfo.userName}}</a>',
-        '                                <img src="{{loginInfo.userImage}}" id="headImage" class="img-rounded" style="width: 30px;height: 30px;" alt="..."/>',
+        '                                <img src="{{loginInfo.userImage}}" id="headImage" class="img-rounded" style="width: 35px;height: 35px;" alt="..."/>',
         '                                <b class="caret"></b>',
         '                            <ul id="user-menu" class="dropdown-menu" role="menu" aria-labelledby="drop4">',
         '                                <li role="presentation"><a role="menuitem" tabindex="-1" href="self.html?1">我的消息</a></li>',

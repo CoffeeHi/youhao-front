@@ -27,8 +27,8 @@ require.config ( {
 
             var http = restful.http;
             var method = restful.method;
-            var editUrl = 'web/front/user/edit';
-            var detailUrl = 'web/front/user/detail';
+            var userUrl = 'web/front/user';
+            //var detailUrl = 'web/front/user/detail';
             var editData = {
                 name:'',
                 addr:'',
@@ -89,7 +89,7 @@ require.config ( {
                 editData.job = $('#jobInput').val().trim();
                 editData.sig = $('#sigInput').val().trim();
                 editData.name = $('#nameInput').val().trim();
-                http(editUrl, {action:method.PUT, sync:true, data:editData}, function (o) {
+                http(userUrl, {action:method.PUT, sync:true, data:editData}, function (o) {
                    if(o.status){
                        $('#nameSig').show();
                        $('.name').text(editData.name).show();
@@ -112,7 +112,7 @@ require.config ( {
 
             /*获取用户信息*/
             function getUserInfo(){
-                http(detailUrl, {action:method.GET}, function (o) {
+                http(userUrl, {action:method.GET}, function (o) {
                     if(o.status){
                         var data = o.info;
                         $('#name').text(data.name);

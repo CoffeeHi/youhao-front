@@ -2,10 +2,12 @@
 <html>
 <head>
 <title>Single-page</title>
-<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-<link href="css/orderDetail.css" type="text/css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css"  media="all">
 <link rel="stylesheet" href="css/sweetalert.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/orderDetail.css" type="text/css" media="all">
+
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,86 +17,6 @@
 <!-- //Custom Theme files -->
 </head>
 <body>
-<!--Modal-->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div>
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#log" id="logTab" aria-controls="log" role="tab"
-																  data-toggle="tab">登录</a></li>
-						<li role="presentation"><a href="#reg" id="regTab" aria-controls="reg" role="tab"
-												   data-toggle="tab">注册</a></li>
-					</ul>
-					<!-- Tab panes -->
-					<div class="tab-content">
-						<div role="tabpanel" class="tab-pane active" aria-labelledby="log-tab" id="log">
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label for="logNum" class="col-sm-2 control-label">账号</label>
-
-									<div class="col-sm-6">
-										<input type="email" class="form-control" id="logNum" placeholder="邮箱/手机号">
-									</div>
-									<label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
-								</div>
-								<div class="form-group">
-									<label for="logPass" class="col-sm-2 control-label">密码</label>
-
-									<div class="col-sm-6">
-										<input type="password" class="form-control" id="logPass" placeholder="大于6位">
-									</div>
-									<label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox"> 记住密码
-											</label>
-										</div>
-									</div>
-								</div>
-							</form>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary">登录</button>
-								<button type="button" id="close" class="btn btn-default" data-dismiss="modal">关闭
-								</button>
-							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane" aria-labelledby="reg-tab" id="reg">
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label for="logNum" class="col-sm-2 control-label">账号</label>
-
-									<div class="col-sm-6">
-										<input type="email" class="form-control" id="regNum" placeholder="邮箱/手机号">
-									</div>
-									<label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
-								</div>
-								<div class="form-group">
-									<label for="logPass" class="col-sm-2 control-label">密码</label>
-
-									<div class="col-sm-6">
-										<input type="password" class="form-control" id="regPass" placeholder="大于6位">
-									</div>
-									<label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
-								</div>
-							</form>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary">注册</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
 <!--navigation-->
 <div class="top-nav">
 	<nav class="navbar navbar-default">
@@ -124,27 +46,6 @@
 						<li><a href="#" class="fb"></a></li>
 						<li><a href="#" class="gg"></a></li>
 					</ul>
-				</div>
-				<div class="user">
-					<ul class="nav nav-pills">
-						<li>
-							<div class="dropdown-toggle"><a>陈祥</a>
-								<img src="images/head4.jpg" style="width: 30px;height: 30px; " alt="..."
-									 class="img-rounded">
-								<b class="caret"></b>
-							</div>
-							<ul id="user-menu" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的消息</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的旅单</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">个人中心</a></li>
-								<li role="presentation" class="divider"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">退出登录</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<div class="login">
-					<a href="#" data-toggle="modal" data-target="#modal">登录</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -180,22 +81,19 @@
 			</div>
 			<div class="col-md-8 single-page-left">
 				<div class="single-page-info">
-					<div class="type">
-					<span class="label label-warning">组团求约</span>
-					<span class="label label-info">寻求导游</span>
-					</div>
+					<!--<img id="cover" style="width: 200px; height: auto;" src="upload/user/images/95d415fde2ff4f0fafe74c17914f1df4/61070de154724df9bdb855490008aed7.jpg" alt=""/>-->
+
 					<div class="tags">
-					<span class="label label-primary">哈哈哈哈哈</span>
-					<span class="label label-primary">嘻嘻嘻嘻嘻</span>
-					<span class="label label-primary">咕叽咕叽哈哈哈哈</span>
+						<!--<span class="label label-primary">哈哈哈哈哈</span>-->
+						<!--<span class="label label-primary">嘻嘻嘻嘻嘻</span>-->
+						<!--<span class="label label-primary">咕叽咕叽哈哈哈哈</span>-->
 					</div>
-					<h5>目的地：<span>福建师范大学</span></h5>
-					<h5>旅行时间：<span>2016-12-30--2017-01-01</span></h5>
-					<h5>要求：<span>SweetAlert是一款不需要jQuery支持的原生js提示框,风格类似bootstrap。
-						它的提示框不仅美丽动人，并且允许自定义，支持设置提示框标题、提示类型、内容展示图片、确认取消按钮文本、点击后回调函数等。
-					提示：本地sweetalert可能不支持IE8，但放在服务器就OK了，保证网页html能支持w3c标准即可。</span> </h5>
-					<h5>组团人数：<span>5人</span></h5>
-					<h5>已报名：<span>3人</span></h5>
+					<div><label class="col-sm-2 control-label"><i class="fa fa-paper-plane"></i> 目的地</label><span id="target"></span></div>
+					<div><label class="col-sm-2 control-label"><i class="fa fa-calendar-o"></i> 旅行时间</label><span id="date"></span></div>
+					<div><label class="col-sm-2 control-label"><i class="fa fa-tags"></i> 旅行说明</label><span id="content" class="col-sm-offset-2" style="display: block;"></span> </div>
+					<div><label class="col-sm-2 control-label"><i class="fa fa-rmb"></i> 费用方式</label><span id="payway"></span></div>
+					<div><label class="col-sm-2 control-label"><i class="fa fa-user"></i> 约游人数</label><span id="touristNum">0</span>人</div>
+					<div><label class="col-sm-2 control-label"><i class="fa fa-heart"></i> 当前人数</label><span id="tourists">0</span>人</div>
 					<div class="member">
 					<img src="images/head1.jpg" alt="..." class="img-thumbnail">
 					<img src="images/head1.jpg" alt="..." class="img-thumbnail">
@@ -215,9 +113,9 @@
 					</div>
 					<div class="comment-icons">
 						<ul>
-							<li><span class="clndr"></span>2016-02-01 14:12</li>
-							<li><span class="admin"></span> <a href="#">点击查看联系方式</a></li>
-							<li><a href="#" class="like">15</a></li>
+							<li><span class="clndr"></span><a id="postTime" href="javascript:;"></a></li>
+							<li><span class="admin"></span><a id="showContact" href="javascript:;">点击查看联系方式</a></li>
+							<li><a href="javascript:;" id="goods" class="like"></a></li>
 						</ul>
 					</div>
 				</div>
@@ -225,13 +123,12 @@
 				<input type="submit" value="立即加入">
 				</div>
 				<div class="admin-text">
-					<h5>Written By 彭于晏</h5>
+					<h5>Posted By <span id="authorName"></span></h5>
 					<div class="admin-text-left">
-						<a href="#"><img src="images/head4.jpg" alt=""/></a>
+						<a href="#"><img id="authorImage" src="upload/default/user/images/default_head.png" alt=""/></a>
 					</div>
 					<div class="admin-text-right">
-						<p>前段时间，iOS7不是瓜未熟就落地了嘛，然后捡瓜的人很多，然后国内外开始了各种探讨，从界面到动画，从兼容到实现等。
-							其中，“毛玻璃”一次梆梆出世，一些爱折腾的弄潮人就可以琢磨怎么用CSS实现之，国内有之（不记得了），国外也有之（比方说CSS tricks上的这篇”lurry Transparent Header Effect from iOS7 in CSS“）~</p>
+						<p id="authorIntro"></p>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
