@@ -1,6 +1,11 @@
 
 body{ font-family:  Microsoft Yahei, "Helvetica Neue", Helvetica, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;}
-a{ text-decoration:none;}
+a:link,a:visited,a:hover,a:active{
+  text-decoration:none;
+}
+a:focus{
+  outline:0;
+}
 img{ border:none;}
 ul,ol{ list-style:none;}
 a:hover { text-decoration: none; }

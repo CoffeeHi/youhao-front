@@ -249,6 +249,7 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
                     for(var a in o.info){
                         setCookie(a, o.info[a], 1);
                     }
+                    location.reload(true);
                 }else {
                     $('#logWarn').text(o.info).removeClass('submit-success');
                 }
@@ -276,7 +277,7 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
                 }
                 $('#exit').click(function () { //绑定退出按钮
                     http(exitUrl, {action: method.DELETE}, function () {
-                        location.reload();
+                        location.reload(true);
                     });
                 });
             }else {

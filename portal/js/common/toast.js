@@ -9,7 +9,7 @@ define(['jq', 'plugins/sweetalert.min'], function () {
         input: 'input'
     };
 
-    function toast(text, type) {
+    function toast(text, type, func) {
         swal({
             title:"",
             text: text,
@@ -17,6 +17,8 @@ define(['jq', 'plugins/sweetalert.min'], function () {
             showConfirmButton: true,
             confirmButtonText: '确定',
             confirmButtonClass: "btn-default"
+        }, function () {
+            func != undefined && func();
         });
     }
 

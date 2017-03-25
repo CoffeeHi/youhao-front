@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Single-page</title>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/sweetalert.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/tourDetail.css" type="text/css" media="all">
+
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Excursion Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- //Custom Theme files -->
+</head>
+<body>
+<div class="modal fade" id="apply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">我能担当</h4>
+            </div>
+            <div class="modal-body">
+                <div style="width: 100%; height: 100px;">
+                    <div value=1 class="col-sm-3 role-item">
+                        <i class="fa fa-camera-retro"></i>
+
+                        <div>拍摄</div>
+                    </div>
+                    <div value=2 class="col-sm-3 role-item">
+                        <i class="fa fa-car"></i>
+
+                        <div>老司机</div>
+                    </div>
+                    <div value=3 class="col-sm-3 role-item">
+                        <i class="fa fa-book"></i>
+
+                        <div>翻译</div>
+                    </div>
+                    <div value=4 class="col-sm-3 role-item">
+                        <i class="fa fa-graduation-cap"></i>
+
+                        <div>百科全书</div>
+                    </div>
+                    <div value=5 class="col-sm-3 role-item">
+                        <i class="fa fa-medkit"></i>
+
+                        <div>后勤保障</div>
+                    </div>
+                    <div value=6 class="col-sm-3 role-item">
+                        <i class="fa fa-cutlery"></i>
+
+                        <div>吃瓜群众</div>
+                    </div>
+                    <div value=7 class="col-sm-3 role-item">
+                        <i class="fa fa-flag"></i>
+
+                        <div>行程指挥</div>
+                    </div>
+                    <div value=8 class="col-sm-3 role-item">
+                        <i class="fa fa-child"></i>
+
+                        <div>砍价能手</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" id="applyBtn" data-loading-text="Loading..." class="btn btn-primary">申请加入</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!--navigation-->
+<div class="top-nav">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="tour.html" class="active">旅单</a></li>
+                    <li><a href="blog.html">旅圈</a></li>
+                    <li><a href="vrtour.html">全景</a></li>
+                    <li><a href="guide.html">导游</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#"></a></li>
+                        <li><a href="#" class="fb"></a></li>
+                        <li><a href="#" class="gg"></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--navigation-->
+<!--header-->
+<div class="header">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt=""></a>
+        </div>
+        <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+        </form>
+    </div>
+</div>
+<!--//header-->
+<!--single-page-->
+<div class="single-page">
+    <div class="container">
+        <div class="work-title sngl-title">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Single-page</li>
+            </ol>
+        </div>
+        <div class="col-md-8 single-page-left">
+            <div class="single-page-info">
+                <div>
+                    <span class="label label-warning"></span>
+                    <span id="tourState" class="label label-info"></span>
+                </div>
+                <div class="tags tour-info">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
+                <div class="tour-info"><label class="col-sm-2 control-label"><i class="fa fa-paper-plane"></i> 目的地</label><span
+                        id="target"><i class="fa fa-circle-o-notch fa-spin"></i></span></div>
+                <div class="tour-info"><label class="col-sm-2 control-label"><i class="fa fa-calendar-o"></i> 旅行时间</label><span id="date"><i
+                        class="fa fa-circle-o-notch fa-spin"></i></span></div>
+                <div class="tour-info"><label class="col-sm-2 control-label"><i class="fa fa-tags"></i> 旅行说明</label><span id="content"
+                                                                                                        class="col-sm-offset-2"
+                                                                                                        style="display: block;"><i
+                        class="fa fa-circle-o-notch fa-spin"></i></span></div>
+                <div class="tour-info"><label class="col-sm-2 control-label"><i class="fa fa-rmb"></i> 费用方式</label><span id="payway"><i
+                        class="fa fa-circle-o-notch fa-spin"></i></span></div>
+                <div class="tour-info"><label class="col-sm-2 control-label"><i class="fa fa-user"></i> 约游人数</label><span id="touristNum"><i
+                        class="fa fa-circle-o-notch fa-spin"></i></span>
+                </div>
+                <div class="tour-info"><label class="col-sm-2 control-label"><i class="fa fa-heart"></i> 当前人数</label><span id="tourists"><i
+                        class="fa fa-circle-o-notch fa-spin"></i></span>
+                </div>
+                <div class="member tour-info">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
+                <div class="comment-icons">
+                    <ul>
+                        <li><span class="clndr"></span><a id="postTime" href="javascript:;"></a></li>
+                        <li><span class="admin"></span><a id="showContact" href="javascript:;">点击查看联系方式</a></li>
+                        <li><a href="javascript:;" id="goods" class="like"></a></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="doingTour">
+                    <input data-toggle="modal" class="toApply" data-target="#apply" type="button" value="立即加入">
+                    <input data-toggle="modal" class="toExit" type="button" value="退出旅团">
+                </div>
+                <div class="admin-text">
+                    <h5>Posted By <span id="authorName"></span></h5>
+
+                    <div class="admin-text-left">
+                        <a href="#"><img id="authorImage" src="upload/default/user/images/default_head.png" alt=""/></a>
+                    </div>
+                    <div class="admin-text-right">
+                        <p id="authorIntro"></p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!--related-posts-->
+                <div class="row related-posts">
+                    <h4>最新发布</h4>
+
+                    <div class="col-xs-6 col-md-3 related-grids">
+                        <a href="singlepage.html" class="thumbnail">
+                            <img src="images/img1.jpg" alt=""/>
+                        </a>
+                        <h5><a href="singlepage.html">Lorem Ipsum is simply</a></h5>
+                    </div>
+                    <div class="col-xs-6 col-md-3 related-grids">
+                        <a href="singlepage.html" class="thumbnail">
+                            <img src="images/img2.jpg" alt=""/>
+                        </a>
+                        <h5><a href="singlepage.html">Lorem Ipsum is simply</a></h5>
+                    </div>
+                    <div class="col-xs-6 col-md-3 related-grids">
+                        <a href="singlepage.html" class="thumbnail">
+                            <img src="images/img3.jpg" alt=""/>
+                        </a>
+                        <h5><a href="singlepage.html">Lorem Ipsum is simply</a></h5>
+                    </div>
+                    <div class="col-xs-6 col-md-3 related-grids">
+                        <a href="singlepage.html" class="thumbnail">
+                            <img src="images/img4.jpg" alt=""/>
+                        </a>
+                        <h5><a href="singlepage.html">Lorem Ipsum is simply</a></h5>
+                    </div>
+                </div>
+                <!--//related-posts-->
+                <div class="response">
+                    <h4>评论</h4>
+
+                    <div class="media response-info">
+                        <div class="media-left response-text-left">
+                            <a href="#">
+                                <img class="media-object" src="images/icon1.png" alt=""/>
+                            </a>
+                            <h5><a href="#">Admin</a></h5>
+                        </div>
+                        <div class="media-body response-text-right">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
+                                passages of Lorem Ipsum available,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <ul>
+                                <li>MARCH 21, 2013</li>
+                                <li><a class="reply" href="javascript:;">回复</a></li>
+                            </ul>
+                            <div class="media response-info">
+                                <div class="media-left response-text-left">
+                                    <a href="#">
+                                        <img class="media-object" src="images/icon1.png" alt=""/>
+                                    </a>
+                                    <h5><a href="#">Admin</a></h5>
+                                </div>
+                                <div class="media-body response-text-right">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many
+                                        variations of
+                                        passages of Lorem Ipsum available,
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <ul>
+                                        <li>MARCH 21, 2014</li>
+                                        <li><a class="reply" href="javascript:;">回复</a></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="media response-info">
+                        <div class="media-left response-text-left">
+                            <a href="#">
+                                <img class="media-object" src="images/icon1.png" alt=""/>
+                            </a>
+                            <h5><a href="#">Admin</a></h5>
+                        </div>
+                        <div class="media-body response-text-right">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
+                                passages of Lorem Ipsum available,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <ul>
+                                <li>MARCH 21, 2013</li>
+                                <li><a class="reply" href="javascript:;">回复</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="coment-form">
+                    <h4>发布评论</h4>
+                    <textarea type="text" placeholder="有什么想说的吗..." required=""></textarea>
+                    <input id="comment" type="submit" value="发布评论">
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4 single-page-right">
+                <div class="category">
+                    <h4>热门景点</h4>
+
+                    <div class="list-group">
+                        <a href="singlepage.html" class="list-group-item">Cras justo odio</a>
+                        <a href="singlepage.html" class="list-group-item">Dapibus ac facilisis in</a>
+                        <a href="singlepage.html" class="list-group-item">Morbi leo risus</a>
+                        <a href="singlepage.html" class="list-group-item">Porta ac consectetur ac</a>
+                        <a href="singlepage.html" class="list-group-item">Vestibulum at eros</a>
+                        <a href="singlepage.html" class="list-group-item">Cras justo odio</a>
+                        <a href="singlepage.html" class="list-group-item">Cras justo odio</a>
+                        <a href="singlepage.html" class="list-group-item">Cras justo odio</a>
+                    </div>
+                </div>
+                <div class="comments">
+                    <h4>最近访问</h4>
+
+                    <div class="comments-info">
+                        <div class="cmnt-icon-left">
+                            <a href="singlepage.html"><img src="images/rehead1.jpg" alt=""/></a>
+                        </div>
+                        <div class="cmnt-icon-right">
+                            <p>MARCH 1, 2015</p>
+
+                            <p><a href="singlepage.html">Admin</a></p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <p class="cmmnt">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="comments-info cmnts-mddl">
+                        <div class="cmnt-icon-left">
+                            <a href="singlepage.html"><img src="images/rehead2.jpg" alt=""/></a>
+                        </div>
+                        <div class="cmnt-icon-right">
+                            <p>MARCH 1, 2015</p>
+
+                            <p><a href="singlepage.html">Admin</a></p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <p class="cmmnt">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="comments-info">
+                        <div class="cmnt-icon-left">
+                            <a href="singlepage.html"><img src="images/rehead3.jpg" alt=""/></a>
+                        </div>
+                        <div class="cmnt-icon-right">
+                            <p>MARCH 1, 2015</p>
+
+                            <p><a href="singlepage.html">Admin</a></p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <p class="cmmnt">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!--//single-page-->
+    <!--尾部-->
+    <div class="footer">
+        <div class="container">
+            <div class="col-md-4 about">
+                <div align="center"><h3>关于我们</h3></div>
+                <p>游好，一个更为自由的旅游平台，为爱好旅游的人提供一个相识游玩的机会。
+                </p>
+
+                <p>在这里你可以找到志同道合的旅友和导游，大胆的说出你的旅行意愿，我们来帮你牵线搭桥。
+                </p>
+
+                <p>在这里你可以发表你的旅行日志和旅友们一起分享，大家沿途的风景也在旅友圈等着你一起领略。</p>
+            </div>
+            <div class="col-md-4 posts" align="center">
+                <h3>精彩旅程</h3>
+
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object thumbnail" src="images/bottom1.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="#">长城</a></h4>
+                        <h5>2015-11-25</h5>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object thumbnail" src="images/bottom2.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="Home.jsp?nav=Singlepage">故宫</a></h4>
+                        <h5>2015-11-25</h5>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object thumbnail" src="images/bottom3.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="#">福建土楼</a></h4>
+                        <h5>2015-11-25</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 address" align="center">
+                <h3>联系我们</h3>
+
+                <p>商业合作 | 景点推广 | 网站合作 | 加入我们</p>
+
+                <p>请联系我们，我们将竭诚为您服务。</p>
+                <ul>
+                    <li><span></span>福建师范大学光电与信息工程学院</li>
+                    <li><span class="ph-no"></span>+00 (123) 456 78 90</li>
+                    <li><span class="mail"></span><a href="mailto:example@mail.com">youhao@foxmail.com</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="copy-right">
+        <div class="container">
+            <p>Copyright &copy; 2017-2018 www.youhao.cn 游好科技股份有限公司版权所有 ICP证：闽ICP备09009365号-6</p>
+        </div>
+    </div>
+    <!--//尾部-->
+    <script src="js/require.js" data-main="js/modules/tour/tourDetail.js"></script>
+</body>
+</html>

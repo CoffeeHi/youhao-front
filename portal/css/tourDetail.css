@@ -22,7 +22,7 @@
     margin-bottom: 4em;
 }
 .tags {
-    margin-top: 1.3em;
+    margin-top: 0.5em;
 }
 .tags span {
     font-size: 0.9em;
@@ -38,7 +38,8 @@
 .coment-form textarea {
     font-size: 15px;
 }
-.join input {
+.doingTour > input{
+    display: none;
     background: #F3F3F3;
     padding: .8em 0;
     border: none;
@@ -54,13 +55,18 @@
     -o-transition: .5s all;
     -ms-transition: .5s all;
 }
-.join input[type="submit"]:hover {
+.toApply:hover {
     color: #fff;
     background: #5F9EA0;
     outline: none;
 }
+.toExit:hover {
+    color: #fff;
+    background: #999999;
+    outline: none;
+}
 .comment-icons {
-    margin: 2.5em 0 1em 0;
+    margin: 2em 0;
 }
 .sweet-alert h2 {
     margin-top: 1em;
@@ -68,7 +74,7 @@
 .single-page-info {
    font-size: 1.1em;
 }
-.single-page-info div {
+.single-page-info .tour-info {
 margin: 1.5em 0 1em;
 line-height: 1.6em;
 }
@@ -80,4 +86,22 @@ color: #5F9EA0;
     color: inherit;
     font-size: inherit;
     line-height: inherit;
+}
+.role-item {
+    text-align: center;
+    font-size: 16px;
+    padding-bottom: 15px;
+    color: #999999;
+}
+.role-item:hover {
+    cursor: pointer;
+    color: #42E4d8;
+}
+.role-item-active {
+    color: #42E4d8;
+}
+.member > .userRole {
+    height: 55px;
+    width: 55px;
+    display: inline-block;
 }

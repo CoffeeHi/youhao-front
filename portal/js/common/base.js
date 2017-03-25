@@ -1,5 +1,16 @@
 ;
-define([], function () {
+define(['jq', 'plugins/move-top', 'plugins/easing', 'plugins/bootstrap.min'], function () {
+
+    (function moveSlowly() {
+        <!-- start-smoth-scrolling-->
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+        });
+        <!--smooth-scrolling-of-move-up-->
+        $().UItoTop({easingType: 'easeOutQuart'});
+    })();
+
     //验证码类型
     var codeType = {
         LOGIN:1,
@@ -24,6 +35,34 @@ define([], function () {
             return '线下AA';
         }else if(type == 2){
             return '我买单';
+        }
+    }
+
+    //得到旅单用户角色
+    function getRole(role){
+        switch (role){
+            case 0:return '组织者';break;
+            case 1:return '拍摄';break;
+            case 2:return '老司机';break;
+            case 3:return '翻译';break;
+            case 4:return '百科全书';break;
+            case 5:return '后勤保障';break;
+            case 6:return '吃瓜群众';break;
+            case 7:return '行程指挥';break;
+            case 8:return '砍价能手';break;
+            default : return '';
+        }
+    }
+
+    //获取旅单状态
+    function getTourState(state){
+        switch (state){
+            case 0:return '拼团中(^_^)';break;
+            case 1:return '已组团(๑•̀ㅂ•́)و✧';break;
+            case 2:return '进行中(⊙o⊙)';break;
+            case 3:return '已完成(*˘︶˘*)♡';break;
+            case 4:return '已解散|･ω･｀)';break;
+            default : return '';
         }
     }
 
@@ -69,6 +108,8 @@ define([], function () {
         getPayway:getPayway,
         getContact:getContact,
         getContactIcon:getContactIcon,
-        isEmpty:isEmpty
+        isEmpty:isEmpty,
+        getRole:getRole,
+        getTourState:getTourState
     }
 });
