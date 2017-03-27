@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Tours</title>
+<title>全景图-游好旅行</title>
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-<!--web-font-->
-<!--<link href='http://fonts.useso.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>-->
-<!--<link href='http://fonts.useso.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>-->
-<!--//web-font-->
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,102 +11,8 @@
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //Custom Theme files -->
-<!-- js -->
-	<script src="js/jquery-1.11.2.min.js"></script>
-<!-- //js -->	
-<!-- start-smoth-scrolling-->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){		
-				event.preventDefault();
-				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-			});
-		});
-</script>
-<!--//end-smoth-scrolling-->
 </head>
 <body>
-<!--Modal-->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div>
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#log" id="logTab" aria-controls="log" role="tab"
-																  data-toggle="tab">登录</a></li>
-						<li role="presentation"><a href="#reg" id="regTab" aria-controls="reg" role="tab"
-												   data-toggle="tab">注册</a></li>
-					</ul>
-					<!-- Tab panes -->
-					<div class="tab-content">
-						<div role="tabpanel" class="tab-pane active" aria-labelledby="log-tab" id="log">
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label for="logNum" class="col-sm-2 control-label">账号</label>
-
-									<div class="col-sm-6">
-										<input type="email" class="form-control" id="logNum" placeholder="邮箱/手机号">
-									</div>
-									<label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
-								</div>
-								<div class="form-group">
-									<label for="logPass" class="col-sm-2 control-label">密码</label>
-
-									<div class="col-sm-6">
-										<input type="password" class="form-control" id="logPass" placeholder="大于6位">
-									</div>
-									<label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox"> 记住密码
-											</label>
-										</div>
-									</div>
-								</div>
-							</form>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary">登录</button>
-								<button type="button" id="close" class="btn btn-default" data-dismiss="modal">关闭
-								</button>
-							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane" aria-labelledby="reg-tab" id="reg">
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label for="logNum" class="col-sm-2 control-label">账号</label>
-
-									<div class="col-sm-6">
-										<input type="email" class="form-control" id="regNum" placeholder="邮箱/手机号">
-									</div>
-									<label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
-								</div>
-								<div class="form-group">
-									<label for="logPass" class="col-sm-2 control-label">密码</label>
-
-									<div class="col-sm-6">
-										<input type="password" class="form-control" id="regPass" placeholder="大于6位">
-									</div>
-									<label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
-								</div>
-							</form>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary">注册</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 
 <!--navigation-->
 <div class="top-nav">
@@ -132,7 +34,7 @@
 					<li><a href="order.html">旅单</a></li>
 					<li><a href="blog.html">旅圈</a></li>
 					<li><a href="vrtour.html" class="active">全景</a></li>
-					<li><a href="guide.html">导游</a></li>
+					<!--<li><a href="guide.html">导游</a></li>-->
 					<li><a href="contact.html">联系我们</a></li>
 				</ul>
 				<div class="social-icons">
@@ -141,27 +43,6 @@
 						<li><a href="#" class="fb"></a></li>
 						<li><a href="#" class="gg"></a></li>
 					</ul>
-				</div>
-				<div class="user">
-					<ul class="nav nav-pills">
-						<li>
-							<div class="dropdown-toggle"><a>陈祥</a>
-								<img src="images/head4.jpg" style="width: 30px;height: 30px; " alt="..."
-									 class="img-rounded">
-								<b class="caret"></b>
-							</div>
-							<ul id="user-menu" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的消息</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的旅单</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">个人中心</a></li>
-								<li role="presentation" class="divider"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">退出登录</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<div class="login">
-					<a href="#" data-toggle="modal" data-target="#modal">登录</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -192,7 +73,7 @@
 				<li><a href="index.html">Home</a></li>
 				<li>Tours</li>
 			</ol>
-			<div class="tesimonial"><h3>Tours</h3></div>
+			<div class="tesimonial"><h3>最新全景</h3></div>
 			<div class="row tour-info">			
 				<div class="col-sm-6 col-md-4 tour-grids">
 					<div class="thumbnail">
@@ -200,8 +81,8 @@
 							<img src="images/img23.jpg" class="img-responsive zoom-img " alt="">
 						</a>
 						<div class="caption tour-caption">
-							<h3><a href="singlepage.html">Princess of hill stations</a></h3>
-							<p>Cras justo odiodapibus ac facilisis egestas eget</p>				
+							<h3><a href="singlepage.html">庐山</a></h3>
+							<p>瀑布全景航拍</p>
 						</div>
 					</div>
 				</div>
@@ -211,8 +92,8 @@
 							<img src="images/img24.jpg" class="img-responsive zoom-img " alt="">
 						</a>
 						<div class="caption tour-caption">
-							<h3><a href="singlepage.html">Finibus Bonorum et Malorum</a></h3>
-							<p>Cras justo odiodapibus ac facilisis egestas eget</p>				
+							<h3><a href="singlepage.html">香港</a></h3>
+							<p>夜间全景航拍</p>
 						</div>
 					</div>
 				</div>
@@ -222,8 +103,8 @@
 							<img src="images/img25.jpg" class="img-responsive zoom-img" alt="">
 						</a>
 						<div class="caption tour-caption">
-							<h3><a href="singlepage.html">Finibus Bonorum et Malorum</a></h3>
-							<p>Cras justo odiodapibus ac facilisis egestas eget</p>				
+							<h3><a href="singlepage.html">黑龙江</a></h3>
+							<p>雪山全景航拍</p>
 						</div>
 					</div>
 				</div>
@@ -362,28 +243,6 @@
 			<p>Copyright &copy; 2017-2018 www.youhao.cn 游好科技股份有限公司版权所有 ICP证：闽ICP备09009365号-6</p>
 		</div>
 	</div>
-	<!--//尾部-->
-	<!--smooth-scrolling-of-move-up-->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				/*
-				var defaults = {
-					containerID: 'toTop', // fading element id
-					containerHoverID: 'toTopHover', // fading element hover id
-					scrollSpeed: 1200,
-					easingType: 'linear' 
-				};
-				*/
-				
-				$().UItoTop({ easingType: 'easeOutQuart' });
-				
-			});
-		</script>
-		<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-	<!--//smooth-scrolling-of-move-up-->
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.js"></script>
+<script src="js/require.js" data-main="js/modules/vrtour/vrtour.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/salvattore.css">
     <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/sweetalert.css">
     <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/tour.css" type="text/css" rel="stylesheet" media="all">
     <!-- Custom Theme files -->
@@ -99,152 +100,55 @@
             </div>
         </form>
         <div class="tesimonial"><h3>最新旅单</h3></div>
-        <div id="orderList" data-columns="">
-            <div class="order transparent-all friendly-box">
-                <div class="order-cover">
-                    <div class="intro transparent-half">
-                    </div>
-                    <ul class="rslides" id="covers">
-                        <li>
-                            <a href="images/img_1.jpg">
-                                <img src="images/img_1.jpg" alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="images/img_2.jpg">
-                                <img src="images/img_2.jpg" alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="images/img_3.jpg">
-                                <img src="images/img_3.jpg" alt=""/>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="order-detail">
-                    <a href="javascript:;">
-                    <p><label>目的地：</label><span class="sight">北京北京</span></p>
-                    <p><label>时间：</label>
-                        <span>2017-02-24;&nbsp;2017-02-31</span>
-                    </p>
-                    <p><label>发布者：</label><span>汪峰</span></p>
-                        <p></p>
+        <div id="orderList" class="col-sm-12" data-columns>
+            <div class="order transparent-all"></div>
+            <!--<div class="order transparent-all friendly-box">-->
+                <!--<div class="order-cover">-->
+                    <!--<img src="images/img_1.jpg" alt=""/>-->
+                <!--</div>-->
+                <!--<div class="order-detail">-->
+                        <!--<p><label>目的地：</label><span class="sight">北京北京</span></p>-->
+                        <!--<p><label>时间：</label><span>2017-02-24&nbsp;2017-02-31</span></p>-->
+                        <!--<p><label>发布者：</label><span>汪峰</span></p>-->
+                        <!--<p><label>发布时间：</label><span>1018-01-02 12:00</span></p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="order transparent-all friendly-box">-->
+                <!--<div class="order-cover">-->
+                    <!--<a href="images/img_1.jpg">-->
+                        <!--<img src="images/img_1.jpg" alt=""/>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="order-detail">-->
+                    <!--<a href="javascript:;">-->
+                        <!--<p><label>目的地：</label><span class="sight">北京北京</span></p>-->
+                        <!--<p><label>时间：</label><span>2017-02-24&nbsp;2017-02-31</span></p>-->
+                        <!--<p><label>发布者：</label><span>汪峰</span></p>-->
+                        <!--<p><label>发布时间：</label><span>1018-01-02 12:00</span></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="col-sm-12" style="text-align: center;">
+            <ul class="pagination">
+                <li>
+                    <a href="javascript:;" id="lastest" aria-label="Previous">
+                        <span aria-hidden="true">«</span>
                     </a>
-                </div>
-            </div>
-            <div class="order transparent-all friendly-box">
-                <div class="order-cover">
-                    <a href="images/img_2.jpg">
-                        <img src="images/img_2.jpg" alt=""/>
+                </li>
+                <li><a id="last" href="javascript:;">上一页</a></li>
+                <!--<li class="page-active"><a href="javascript:;" class="page-index">1</a></li>-->
+                <!--<li><a class="page-index" href="javascript:;">2</a></li>-->
+                <!--<li><a class="page-index" href="javascript:;">3</a></li>-->
+                <!--<li><a class="page-index" href="javascript:;">4</a></li>-->
+                <!--<li><a class="page-index" href="javascript:;">5</a></li>-->
+                <li><a id="next" href="javascript:;">下一页</a></li>
+                <li>
+                    <a href="javascript:;" id="nextest" aria-label="Next">
+                        <span aria-hidden="true">»</span>
                     </a>
-                </div>
-                <div class="order-detail">
-                    <a href="javascript:;">
-                        <p><label>目的地：</label><span class="sight">北京北京</span></p>
-                        <p><label>时间：</label>
-                            <span>2017-02-24;&nbsp;2017-02-31</span>
-                        </p>
-                        <p><label>发布者：</label><span>汪峰</span></p>
-                    </a>
-                </div>
-            </div>
-            <div class="order transparent-all friendly-box">
-                <div class="order-cover">
-                    <a href="images/img_3.jpg">
-                        <img src="images/img_3.jpg" alt=""/>
-                    </a>
-                </div>
-                <div class="order-detail">
-                    <a href="javascript:;">
-                        <p><label>目的地：</label><span class="sight">北京北京</span></p>
-                        <p><label>时间：</label>
-                            <span>2017-02-24;&nbsp;2017-02-31</span>
-                        </p>
-                        <p><label>发布者：</label><span>汪峰</span></p>
-                    </a>
-                </div>
-            </div>
-            <div class="order transparent-all friendly-box">
-                <div class="order-cover">
-                    <a href="images/img_4.jpg">
-                        <img src="images/img_4.jpg" alt=""/>
-                    </a>
-                </div>
-                <div class="order-detail">
-                    <a href="javascript:;">
-                        <p><label>目的地：</label><span class="sight">北京北京</span></p>
-                        <p><label>时间：</label>
-                            <span>2017-02-24;&nbsp;2017-02-31</span>
-                        </p>
-                        <p><label>发布者：</label><span>汪峰</span></p>
-                    </a>
-                </div>
-            </div>
-            <div class="order transparent-all friendly-box">
-                <div class="order-cover">
-                    <a href="images/img_5.jpg">
-                        <img src="images/img_5.jpg" alt=""/>
-                    </a>
-                </div>
-                <div class="order-detail">
-                    <a href="javascript:;">
-                        <p><label>目的地：</label><span class="sight">北京北京</span></p>
-                        <p><label>时间：</label>
-                            <span>2017-02-24;&nbsp;2017-02-31</span>
-                        </p>
-                        <p><label>发布者：</label><span>汪峰</span></p>
-                    </a>
-                </div>
-            </div>
-            <div class="order transparent-all friendly-box">
-                <div class="order-cover">
-                    <a href="images/img_6.jpg">
-                        <img src="images/img_6.jpg" alt=""/>
-                    </a>
-                </div>
-                <div class="order-detail">
-                    <a href="javascript:;">
-                        <p><label>目的地：</label><span class="sight">北京北京</span></p>
-                        <p><label>时间：</label>
-                            <span>2017-02-24;&nbsp;2017-02-31</span>
-                        </p>
-                        <p><label>发布者：</label><span>汪峰</span></p>
-                    </a>
-                </div>
-            </div>
-            <div class="order transparent-all friendly-box">
-                <div class="order-cover">
-                    <a href="images/img_7.jpg">
-                        <img src="images/img_7.jpg" alt=""/>
-                    </a>
-                </div>
-                <div class="order-detail">
-                    <a href="javascript:;">
-                        <p><label>目的地：</label><span class="sight">北京北京</span></p>
-                        <p><label>时间：</label>
-                            <span>2017-02-24;&nbsp;2017-02-31</span>
-                        </p>
-                        <p><label>发布者：</label><span>汪峰</span></p>
-                    </a>
-                </div>
-            </div>
-            <div class="order transparent-all friendly-box">
-                <div class="order-cover">
-                    <a href="images/img_8.jpg">
-                        <img src="images/img_8.jpg" alt=""/>
-                    </a>
-                </div>
-                <div class="order-detail">
-                    <a href="javascript:;">
-                        <p><label>目的地：</label><span class="sight">北京北京</span></p>
-                        <p><label>时间：</label>
-                            <span>2017-02-24;&nbsp;2017-02-31</span>
-                        </p>
-                        <p><label>发布者：</label><span>汪峰</span></p>
-                    </a>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

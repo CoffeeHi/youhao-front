@@ -6,39 +6,35 @@ require.config({
         'resp': 'plugins/responsiveslides.min',
 
         'login':'modules/login/login',
-        'restful': 'common/restful',
-        'top':'common/top'
+        'restful': 'common/restful'
 
     },
     shim: {
         'resp': ['jq'],
-        'top':['jq'],
         'login':['jq']
     },
     packages: [],
-    waitSeconds: 0,
-    callback: function () {
-        require(['domReady', 'jq', 'resp', 'top', 'login'], function () {
+    waitSeconds: 0
+});
+require(['domReady', 'jq', 'resp', 'login'], function () {
 
-            //banner
-            (function initBanner() {
-                //banner
-                $("#slider3").responsiveSlides({
-                    auto: true, //自动播放
-                    pager: false, //显示页码
-                    nav: true, //显示左右导航
-                    speed: 500, //动画持续时间，单位为毫秒
-                    namespace: "callbacks", //修改默认的容器名称
-                    before: function () { //切换前的回调函数
-                        $('.events').append("<li>before event fired.</li>");
-                    },
-                    after: function () { //切换完成后回调函数
-                        $('.events').append("<li>after event fired.</li>");
-                    }
-                });
-            })();
-
+    //banner
+    (function initBanner() {
+        //banner
+        $("#slider3").responsiveSlides({
+            auto: true, //自动播放
+            pager: false, //显示页码
+            nav: true, //显示左右导航
+            speed: 500, //动画持续时间，单位为毫秒
+            namespace: "callbacks", //修改默认的容器名称
+            before: function () { //切换前的回调函数
+                $('.events').append("<li>before event fired.</li>");
+            },
+            after: function () { //切换完成后回调函数
+                $('.events').append("<li>after event fired.</li>");
+            }
         });
-    }
+    })();
+
 });
 

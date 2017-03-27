@@ -20,7 +20,7 @@ require ( ['domReady','jq', 'login'], function () {
     var toastDetail = require('common/toast').toastDetail;
     var toastType = require('common/toast').toastType;
 
-    var template = require('plugins/template');
+    //var template = require('plugins/template');
     //var touristsTpl = tourists.toString;
     //var touristsRender = template.compile(touristsTpl);
     //template.helper('getRole', function (role) {

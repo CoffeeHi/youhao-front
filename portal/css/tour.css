@@ -1,5 +1,6 @@
 .order {
     font-size: 1.1em;
+    cursor: pointer;
     /*border: 1.5px solid rgb(189, 189, 189);*/
     transition: border .2s ease-in-out;
     border-radius: 4px;
@@ -93,4 +94,7 @@ a.callbacks_nav.next {
     color: #5F9EA0;
     font-weight: normal;
     /*text-shadow: -4px 4px 4px #eaeaea;*/
+}
+.page-active .page-index{
+    color: #42E4d8 !important;
 }

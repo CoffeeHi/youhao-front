@@ -1,21 +1,17 @@
 require.config ( {
-    baseUrl: 'js/plugins/',
+    baseUrl: 'js',
     paths      : {
-        'jq': 'jquery-1.11.2.min',
-        "domReady": 'ready.min',
-        'moveTop': 'move-top',
-        'easing': 'easing',
-        'bootstrap': 'bootstrap.min',
-        'resp': 'responsiveslides.min',
-        'salvattore': 'salvattore.min',
-        'waypoints':'jquery.waypoints.min',
-        'datetime':'bootstrap-datetimepicker.min',
-        'CN':'bootstrap-datetimepicker.zh-CN'
+        'jq': 'plugins/jquery-1.11.2.min',
+        "domReady": 'plugins/ready.min',
+        'resp': 'plugins/responsiveslides.min',
+        'salvattore': 'plugins/salvattore.min',
+        'waypoints':'plugins/jquery.waypoints.min',
+        'datetime':'plugins/bootstrap-datetimepicker.min',
+        'CN':'plugins/bootstrap-datetimepicker.zh-CN',
+        'login':'modules/login/login'
     },
     shim       : {
-        'moveTop': ['jq'],
-        'easing': ['jq'],
-        'bootstrap': ['jq'],
+        'login':['jq'],
         'resp': ['jq'],
         'datetime': ['jq'],
         'CN': ['jq', 'datetime'],
@@ -23,61 +19,39 @@ require.config ( {
         'salvattore': ['jq']
     },
     packages   : [],
-    waitSeconds: 0,
-    callback   : function () {
-        require ( ['domReady','moveTop', 'easing', 'bootstrap', 'datetime', 'CN',
-            'salvattore', 'waypoints', 'resp' ], function () {
-            var init = function () {
-                <!-- start-smoth-scrolling-->
-                $(".scroll").click(function (event) {
-                    event.preventDefault();
-                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
-                });
-                <!--smooth-scrolling-of-move-up-->
-                $().UItoTop({easingType: 'easeOutQuart'});
-                //测试登录
-                $('#close').click(function () {
-                    $('.user').show();
-                    $('.login').hide();
-                });
-            }();
-            <!-- 订单封面扇叶 -->
-            $("#covers").responsiveSlides({
-                auto: false, //自动播放
-                pager: false, //显示页码
-                nav: true, //显示左右导航
-                speed: 500, //动画持续时间，单位为毫秒
-                namespace: "callbacks", //修改默认的容器名称
-                before: function () { //切换前的回调函数
-                    $('.events').append("<li>before event fired.</li>");
-                },
-                after: function () { //切换完成后回调函数
-                    $('.events').append("<li>after event fired.</li>");
-                }
-            });
-            <!--日期选择器-->
-            $('#dateStart').datetimepicker({
-                format: 'yyyy-mm-dd', //日期的格式
-                startDate:'1900-01-01', //选择器的开始日期
-                autoclose:true, //日期选择完成后是否关闭选择框
-                language:'zh-CN', //语言
-                minView: 'month' //表示日期选择的最小范围，默认是hour
-            }).on('changeDate',function(e){
-                var startTime = e.date;
-                $('#dateOver').datetimepicker('setStartDate',startTime);
-            });
-            $('#dateOver').datetimepicker({
-                format: 'yyyy-mm-dd', //日期的格式
-                startDate:'1900-01-01', //选择器的开始日期
-                autoclose:true, //日期选择完成后是否关闭选择框
-                language:'zh-CN', //语言
-                minView: 'month' //表示日期选择的最小范围，默认是hour
-            }).on('changeDate',function(e){
-                var endTime = e.date;
-                $('#dateStart').datetimepicker('setEndDate',endTime);
-            });
-            //监听刷新
-            var animateBoxWayPoint = function() {
+    waitSeconds: 0
+} );
+require ( ['domReady', 'jq', 'login', 'template/tour/tourPage', 'salvattore', 'waypoints', 'resp','datetime', 'CN'], function (d, j, l, tourListStr, salvattore) {
+
+    var http = require('common/restful').http;
+    var method = require('common/restful').method;
+    var toast = require('common/toast').toast;
+    var toastType = require('common/toast').toastType;
+
+    var temp = require('plugins/template');
+    var tourListTpl = tourListStr.toString;
+    var tourListRender = temp.compile(tourListTpl);
+
+    var pageSize = 40, pageNo = 1, totalPageSize;
+
+    var tourListUrl = 'web/portal/tour/page/';
+
+    getTourList(pageNo, pageSize);
+
+    function getTourList(pageNo, pageSize){
+        http(tourListUrl + pageNo + '/' + pageSize, {action: method.GET}, function (resp) {
+            if(resp.status){
+                totalPageSize = resp.totalPageSize;
+                initRoll(totalPageSize, pageNo);
+
+                var tourList = resp.info;
+                var tourListHtml = tourListRender({list: tourList});
+                $('#orderList').html(tourListHtml);
+                initTourDetail();
+
+                //瀑布流
+                salvattore.registerGrid(document.querySelector('#orderList'));
+                //监听滚动条弹出
                 if ($('.order').length > 0) {
                     $('.order').waypoint( function( direction ) {
                         if( direction === 'down' && !$(this).hasClass('animated') ) {
@@ -85,9 +59,105 @@ require.config ( {
                         }
                     } , { offset: '75%' } );
                 }
-            };
-            animateBoxWayPoint();
-        } );
+            }else {
+                toast('加载失败，请重试', toastType.warning);
+            }
+        });
     }
+
+    function initTourDetail(){
+        $('.order').on('click', function () {
+            location.href = "tourDetail.html?" + $(this).attr('id');
+        });
+    }
+
+    function initRoll(totalPageSize, pageNo) {
+        var rollHtml = '';
+        for(var i = 1; i <= (totalPageSize > 5 ? 5: totalPageSize); i ++){
+            rollHtml += (i == pageNo ? '<li class="page-active">':'<li>') + '<a href="javascript:;" class="page-index">' + i +'</a></li>';
+        }
+        if($('.page-index').length > 0){
+            $('.page-index').parent('li').remove();
+            $('#last').parent('li').after(rollHtml);
+        }else {
+            $('#last').parent('li').after(rollHtml);
+        }
+
+        $('.page-index').click(function () {
+           pageNo = parseInt($(this).text());
+            getTourList(pageNo, pageSize);
+        });
+
+    }
+
+    function scrollTop(){
+        $('body,html').animate({ scrollTop: 0 },
+            {
+                easing: 'easeInOutQuad',
+                duration: 1000
+            });
+    }
+
+    $('#last').click(function () {
+        //if(parseInt($('.page-index').first().text()) > 1){
+        //    $('.page-index').each(function () {
+        //        $(this).text($(this).text() - 1);
+        //    });
+        //}
+
+        pageNo > 1 && pageNo -- && getTourList(pageNo, pageSize);
+    });
+
+    $('#next').click(function () {
+        //if(parseInt($('.page-index').last().text()) < totalPageSize){
+        //    $('.page-index').each(function () {
+        //        $(this).text($(this).text() + 1);
+        //    });
+        //}
+
+        pageNo < totalPageSize && pageNo ++ && getTourList(pageNo, pageSize)
+    });
+
+    $('#lastest').click(function () {
+        if(totalPageSize != 1){
+            pageNo = 1 && getTourList(pageNo, pageSize);
+        }else{
+            toast('已到首页', toastType.info);
+        }
+
+    });
+
+    $('#nextest').click(function () {
+        if(pageNo != totalPageSize){
+            pageNo = totalPageSize && getTourList(pageNo, pageSize);
+        }else {
+            toast('已到末页', toastType.info);
+        }
+
+    });
+
+    <!--日期选择器-->
+    $('#dateStart').datetimepicker({
+        format: 'yyyy-mm-dd', //日期的格式
+        startDate:'1900-01-01', //选择器的开始日期
+        autoclose:true, //日期选择完成后是否关闭选择框
+        language:'zh-CN', //语言
+        minView: 'month' //表示日期选择的最小范围，默认是hour
+    }).on('changeDate',function(e){
+        var startTime = e.date;
+        $('#dateOver').datetimepicker('setStartDate',startTime);
+    });
+    $('#dateOver').datetimepicker({
+        format: 'yyyy-mm-dd', //日期的格式
+        startDate:'1900-01-01', //选择器的开始日期
+        autoclose:true, //日期选择完成后是否关闭选择框
+        language:'zh-CN', //语言
+        minView: 'month' //表示日期选择的最小范围，默认是hour
+    }).on('changeDate',function(e){
+        var endTime = e.date;
+        $('#dateStart').datetimepicker('setEndDate',endTime);
+    });
+
 } );
+
 

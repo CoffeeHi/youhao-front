@@ -12,79 +12,6 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 </head>
 <body>
-<!--Modal-->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div>
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#log" id="logTab" aria-controls="log" role="tab" data-toggle="tab">登录</a></li>
-						<li role="presentation"><a href="#reg" id="regTab" aria-controls="reg" role="tab" data-toggle="tab">注册</a></li>
-					</ul>
-					<!-- Tab panes -->
-					<div class="tab-content">
-						<div role="tabpanel" class="tab-pane active" aria-labelledby="log-tab" id="log">
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label for="logNum" class="col-sm-2 control-label">账号</label>
-									<div class="col-sm-6">
-										<input type="email" class="form-control" id="logNum" placeholder="邮箱/手机号">
-									</div>
-									<label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
-								</div>
-								<div class="form-group">
-									<label for="logPass" class="col-sm-2 control-label">密码</label>
-									<div class="col-sm-6">
-										<input type="password" class="form-control" id="logPass" placeholder="大于6位">
-									</div>
-									<label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox"> 记住密码
-											</label>
-										</div>
-									</div>
-								</div>
-							</form>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary">登录</button>
-								<button type="button" id="close" class="btn btn-default"  data-dismiss="modal">关闭</button>
-							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane" aria-labelledby="reg-tab" id="reg">
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label for="logNum" class="col-sm-2 control-label">账号</label>
-									<div class="col-sm-6">
-										<input type="email" class="form-control" id="regNum" placeholder="邮箱/手机号">
-									</div>
-									<label class="input-warn col-sm-4" for="logNum">*账号不能为空</label>
-								</div>
-								<div class="form-group">
-									<label for="logPass" class="col-sm-2 control-label">密码</label>
-									<div class="col-sm-6">
-										<input type="password" class="form-control" id="regPass" placeholder="大于6位">
-									</div>
-									<label class="input-warn col-sm-4" for="logPass">*密码不能为空</label>
-								</div>
-							</form>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary">注册</button>
-								<button type="button" class="btn btn-default"  data-dismiss="modal">关闭</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
 <!--navigation-->
 <div class="top-nav">
 	<nav class="navbar navbar-default">
@@ -104,7 +31,7 @@
 					<li><a href="order.html">旅单</a></li>
 					<li><a href="blog.html" class="active">旅圈</a></li>
 					<li><a href="vrtour.html">全景</a></li>
-					<li><a href="guide.html">导游</a></li>
+					<!--<li><a href="guide.html">导游</a></li>-->
 					<li><a href="contact.html">联系我们</a></li>
 				</ul>
 				<div class="social-icons">
@@ -113,26 +40,6 @@
 						<li><a href="#" class="fb"></a></li>
 						<li><a href="#" class="gg"></a></li>
 					</ul>
-				</div>
-				<div class="user">
-					<ul class="nav nav-pills">
-						<li>
-							<div class="dropdown-toggle"><a>陈祥</a>
-								<img src="images/head4.jpg" style="width: 30px;height: 30px; " alt="..." class="img-rounded">
-								<b class="caret"></b>
-							</div>
-							<ul id="user-menu" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的消息</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">我的旅单</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">个人中心</a></li>
-								<li role="presentation" class="divider"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">退出登录</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<div class="login">
-					<a href="#" data-toggle="modal" data-target="#modal">登录</a>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -166,19 +73,19 @@
 			</ol>
 			<div class="col-md-8 blog-left" >
 				<div class="blog-info">
-					<h4><a href="singlepage.html">Fringilla condimentum</a></h4>
-					<p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on march 2, 2015 &nbsp;&nbsp; <a href="#">Comments (10)</a></p>
+					<h4><a href="singlepage.html">台湾旅游攻略</a></h4>
+					<p>Posted By <a href="#">陈灵儿</a> &nbsp;&nbsp; on 2017-03-26 &nbsp;&nbsp; <a href="#">评论 (10)</a></p>
 					<div class="blog-info-text">
 						<div class="blog-img">
-							<a href="singlepage.html"> <img src="images/img12.jpg" class="img-responsive zoom-img" alt=""/></a>
+							<a href="singlepage.html"> <img src="http://c3-q.mafengwo.net/s9/M00/67/E8/wKgBs1cQt2GANke5AAOWqrjvyzA28.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90%7Cwatermark%2F1%2Fimage%2FaHR0cDovL2ExLXEubWFmZW5nd28ubmV0L3MxMC9NMDAvOTkvNjIvd0tnQloxaDBxWXFBQUJBYUFBQVhxM2M3d3lrNjg5LnBuZz9pbWFnZU1vZ3IyJTJGdGh1bWJuYWlsJTJGMTgweCUyRnF1YWxpdHklMkY5MA%3D%3D%2Fgravity%2FSouthEast%2Fdx%2F10%2Fdy%2F15%2Fdissolve%2F40" class="img-responsive zoom-img" alt=""/></a>
 						</div>
-						<h5><a href="singlepage.html">CONDIMENTUM FRINGILLA FRINGILLA CONDIMENTUM,FINIBUS BONORUM MALORUM, DONEC UT QUAM LIGULA, SED NISI LOBORTIS.</a></h5>
-						<p class="snglp">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor If you are going to use a passage of Lorem Ipsum,
-							you need to be sure there isn't anything embarrassing hidden in the middle of text. 
-							There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration  
-							in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
-							you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-						<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">Read More</a>
+						<h5><a href="singlepage.html">史上最强台湾交通攻略（高铁&台铁、包车&拼车及各大景点之间交通</a></h5>
+						<p class="snglp">环岛逆时针顺序，台湾主要有这么几个大的县市，台北-桃园-台中（南投日月潭）-嘉义（阿里山）-台南-高雄-垦丁-台东-花莲-宜兰-台北。
+							综合看了很多的攻略，发现大家去台湾，
+							常去的是这么几个：台北、台中、日月潭、清境农场、阿里山、垦丁、花莲、九份。
+							这些地方的交通如何衔接，直接影响到台湾自由行的行程安排。
+							第一次台湾自由行，还是先了解下台湾城市间的几种主要交通方式，然后咱们逐一解决各必游景点之间交通如何衔接。</p>
+						<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">查看更多</a>
 					</div>	
 				</div>
 				<div class="blog-info">
@@ -232,16 +139,16 @@
 			</div>	
 			<div class="col-md-4 single-page-right">
 				<div class="category blog-ctgry">
-					<h4>Categories</h4>
+					<h4>热门攻略</h4>
 					<div class="list-group">
-						<a href="singlepage.html" class="list-group-item">Cras justo odio</a>
-						<a href="singlepage.html" class="list-group-item">Dapibus ac facilisis in</a>
-						<a href="singlepage.html" class="list-group-item">Morbi leo risus</a>
-						<a href="singlepage.html" class="list-group-item">Porta ac consectetur ac</a>
-						<a href="singlepage.html" class="list-group-item">Vestibulum at eros</a>
-						<a href="singlepage.html" class="list-group-item">Cras justo odio</a>
-						<a href="singlepage.html" class="list-group-item">Cras justo odio</a>
-						<a href="singlepage.html" class="list-group-item">Cras justo odio</a>
+						<a href="singlepage.html" class="list-group-item">香港旅行攻略</a>
+						<a href="singlepage.html" class="list-group-item">成都旅行攻略</a>
+						<a href="singlepage.html" class="list-group-item">九寨沟旅行攻略</a>
+						<a href="singlepage.html" class="list-group-item">台湾旅行攻略</a>
+						<a href="singlepage.html" class="list-group-item">三亚旅行攻略</a>
+						<a href="singlepage.html" class="list-group-item">北京旅行攻略</a>
+						<a href="singlepage.html" class="list-group-item">云南旅行攻略</a>
+						<a href="singlepage.html" class="list-group-item">西藏旅行攻略</a>
 					</div>
 				</div>	
 				<div class="recent-posts">
@@ -400,25 +307,6 @@
 		<p>Copyright &copy; 2017-2018 www.youhao.cn 游好科技股份有限公司版权所有 ICP证：闽ICP备09009365号-6</p>
 	</div>
 </div>
-	<!--//footer-->
-<script src="js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script src="js/bootstrap.js"></script>
-<script>
-	$(function () {
-		<!-- start-smoth-scrolling-->
-		$(".scroll").click(function (event) {
-			event.preventDefault();
-			$('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
-		});
-		<!--smooth-scrolling-of-move-up-->
-		$().UItoTop({easingType: 'easeOutQuart'});
-		$('#close').click(function () {
-			$('.user').show();
-			$('.login').hide();
-		});
-	});
-</script>
+<script src="js/require.js" data-main="js/modules/blog/blog.js"></script>
 </body>
 </html>

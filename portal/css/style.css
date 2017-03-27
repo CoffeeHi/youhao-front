@@ -2547,10 +2547,15 @@ resize: none;
   font-size: 1.1em;
 }
 .input-warn {
-  color: #ED4D1E;
+  color: #5F9EA0;
   padding-left: 0;
   line-height: 34px;
   font-size: 1.0em;
+  font-weight: normal;
+}
+#log label, #reg label {
+  font-weight: normal;
+  color: #5F9EA0;
 }
 .bb-grids .thumbnail > img {
   transition: width, height, 0.8s, ease-in;

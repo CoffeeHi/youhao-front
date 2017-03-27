@@ -14,7 +14,7 @@ define(['jq', 'common/toast'], function (jq, toast) {
     function http(url, param, fun) {
         return $ajax({
             type: param.action,
-            url: url+'?'+new Date().valueOf(),
+            url: url+'?' + new Date().valueOf(),
             async: !param.sync,
             data: JSON.stringify(param.data), //配合后端的@RequestBody注解
             dataType: "json",
