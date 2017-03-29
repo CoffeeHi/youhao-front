@@ -16,7 +16,7 @@ define(['jq', 'common/toast'], function (jq, toast) {
             type: param.action,
             url: url+'?' + new Date().valueOf(),
             async: !param.sync,
-            data: JSON.stringify(param.data), //配合后端的@RequestBody注解
+            data: (param.action == method.GET && param.data != undefined) ? ('requestString=' + JSON.stringify(param.data)):JSON.stringify(param.data), //配合后端的@RequestBody注解
             dataType: "json",
             contentType:"application/json",
             success: function (data, textStatus) {

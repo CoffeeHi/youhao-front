@@ -36,10 +36,19 @@ require ( ['domReady', 'jq', 'login', 'template/tour/tourPage', 'salvattore', 'w
 
     var tourListUrl = 'web/portal/tour/page/';
 
+    var tourParam = {
+        dateStart:'',
+        dateOver:'',
+        target:''
+    };
+
     getTourList(pageNo, pageSize);
 
     function getTourList(pageNo, pageSize){
-        http(tourListUrl + pageNo + '/' + pageSize, {action: method.GET}, function (resp) {
+        tourParam.dateStart = $('#dateStart').val().trim();
+        tourParam.dateOver = $('#dateOver').val().trim();
+        tourParam.target = $('#target').val().trim();
+        http(tourListUrl + pageNo + '/' + pageSize, {action: method.GET, data: tourParam}, function (resp) {
             if(resp.status){
                 totalPageSize = resp.totalPageSize;
                 initRoll(totalPageSize, pageNo);
@@ -90,13 +99,17 @@ require ( ['domReady', 'jq', 'login', 'template/tour/tourPage', 'salvattore', 'w
 
     }
 
-    function scrollTop(){
-        $('body,html').animate({ scrollTop: 0 },
-            {
-                easing: 'easeInOutQuad',
-                duration: 1000
-            });
-    }
+    //function scrollTop(){
+    //    $('body,html').animate({ scrollTop: 0 },
+    //        {
+    //            easing: 'easeInOutQuad',
+    //            duration: 1000
+    //        });
+    //}
+
+    $('#query').click(function () {
+        getTourList(pageNo, pageSize);
+    });
 
     $('#last').click(function () {
         //if(parseInt($('.page-index').first().text()) > 1){

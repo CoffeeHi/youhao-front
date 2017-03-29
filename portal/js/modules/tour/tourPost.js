@@ -210,7 +210,6 @@ require ( ['domReady', 'jq', 'login', 'datetime', 'datetime-CN',
                 }else {
                     toast(resp.info, toastType.warning);
                 }
-                console.log(resp);
             },
             error: function (resp) {
                 if(resp.status == 401){
@@ -220,10 +219,18 @@ require ( ['domReady', 'jq', 'login', 'datetime', 'datetime-CN',
         });
     }
 
+    //$('#taginfo').focus(function () {
+    //    $("body").keydown(function() {
+    //        if (event.keyCode == "13") {//keyCode=13是回车键
+    //            $('#addtag').trigger('click');
+    //        }
+    //    });
+    //});
+    
     //添加标签
     $('#addtag').click(function () {
         if($('#tags').children().length < 3){
-            if($('#taginfo').val() === '' || $('#taginfo').val() === null){
+            if(base.isEmpty($('#taginfo').val().trim())){
                 swal({
                     title:"标签不能为空",
                     type:"warning",

@@ -127,7 +127,7 @@ button.btn.btn-default {
   text-align: center;
   color: #fff;
   font-family: 'Playfair Display', serif;
-  font-style: italic;
+  /*font-style: italic;*/
 }
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 /*------------------ Slider Part starts Here----------*/

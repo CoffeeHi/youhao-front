@@ -18,26 +18,33 @@ require ( ['domReady','jq', 'login'], function () {
     var toast = require('common/toast').toast;
     var toastHtml = require('common/toast').toastHtml;
     var toastDetail = require('common/toast').toastDetail;
+    var toastInput = require('common/toast').toastInput;
     var toastType = require('common/toast').toastType;
 
-    //var template = require('plugins/template');
-    //var touristsTpl = tourists.toString;
-    //var touristsRender = template.compile(touristsTpl);
-    //template.helper('getRole', function (role) {
-    //    return base.getRole(role);
-    //});
+    var getCookie = require('common/cookie').getCookie;
 
     var tourId = location.search.substr(1);
     var tourUrl = 'web/front/tour/' + tourId; //获取旅单详情
     var tourJoinUrl = 'web/front/tour/' + tourId + '/role/'; //加入旅单
     var tourTouristsUrl = 'web/front/tour/' + tourId + '/tourists'; //获取旅单人员
     var tourExitUrl = 'web/front/tour/' + tourId; //退出旅单
+    var insertComUrl = 'web/front/com/tour'; //评论旅单
+    var deleteComUrl = 'web/front/com/tour/'; //删除评论
+    var getComUrl = 'web/portal/com/tour/page/'; //查询评论
 
-    var contact = '';
-    var contactType = 0;
+    var contact = '',contactType = 0;
+
+    var comArgs = {
+        comTarget:tourId,
+        comType:1,  //评论类型(0-旅单、1-文章、2-全景)
+        comContent:'',
+        comParent:''
+    };
+    var comPageNo = 1, comPageSize = 10;
 
     getTour();
     getTourists();
+    getComs(comPageNo, comPageSize);
 
     //获取旅单信息
     function getTour(){
@@ -65,13 +72,12 @@ require ( ['domReady','jq', 'login'], function () {
                 //contact //显示联系方式
                 contact = tour.contact;
                 contactType = tour.contactType;
-                $('#showContact').click(function () {
-                    toastHtml(base.getContact(contactType), contact, base.getContactIcon(contactType));
-                });
                 //author
                 $('#authorName').text(tour.authorName);
                 $('#authorImage').attr('src', tour.authorImage);
                 $('#authorIntro').text(base.isEmpty(tour.authorIntro) ? '这位大侠还没有介绍自己哦(⊙o⊙)':tour.authorIntro);
+            }else {
+                toast(resp.info, toastType.warning);
             }
         });
     }
@@ -92,9 +98,15 @@ require ( ['domReady','jq', 'login'], function () {
                 $('[data-toggle="tooltip"]').tooltip();
                 //隐藏加入/退出按钮
                 if(tourists.ifJoin){
+                    $('#showContact').click(function () {
+                        toastHtml(base.getContact(contactType), contact, base.getContactIcon(contactType));
+                    });
                     $('.toApply').hide();
                     $('.toExit').show();
                 }else {
+                    $('#showContact').click(function () {
+                        toast("请先加入旅单", toastType.warning);
+                    });
                     $('.toApply').show();
                     $('.toExit').hide();
                 }
@@ -103,6 +115,109 @@ require ( ['domReady','jq', 'login'], function () {
 
     }
 
+    //获取旅单评论
+    function getComs(pageNo, pageSize){
+        http(getComUrl+pageNo+'/'+pageSize+'/'+tourId, {action: method.GET}, function (resp) {
+            if(resp.status){
+                var comListHtml = '';
+                resp.info.forEach(function (val) {
+                    comListHtml += [' <div class="media response-info">',
+                        '                        <div class="media-left response-text-left">',
+                        '                            <a href="#">',
+                        '                                <img class="media-object" src="',val.comAuthorImg,'" alt=""/>',
+                        '                            </a>',
+                        '                            <h5><a href="#">',val.comAuthorName,'</a></h5>',
+                        '                        </div>',
+                        '                        <div class="media-body response-text-right">',
+                        '                            <p>',val.comContent,'</p>',
+                        '                            <ul>',
+                        '                                <li>',val.comTime,'</li>',
+                        '                                <li><a class="reply" ','id="'+val.comId,'" href="javascript:;">回复</a></li>'].join('');
+                        if(getCookie('userId') === val.comAuthor){
+                            comListHtml += '                                <li><a class="delete" '+'delId="'+val.comId+'" href="javascript:;">删除</a></li>';
+                        }
+                        comListHtml += '                            </ul>';
+                    val.commentList.forEach(function (val2) {
+                        comListHtml += ['                            <div class="media response-info">',
+                            '                                <div class="media-left response-text-left">',
+                            '                                    <a href="#">',
+                            '                                        <img class="media-object" src="',val2.comAuthorImg,'" alt=""/>',
+                            '                                    </a>',
+                            '                                    <h5><a href="#">',val2.comAuthorName,'</a></h5>',
+                            '                                </div>',
+                            '                                <div class="media-body response-text-right">',
+                            '                                    <p>',val2.comContent,'</p>',
+                            '                                    <ul>',
+                            '                                        <li>',val2.comTime,'</li>',
+                            '                                        <li><a class="reply" ','id="'+val2.comId,'" href="javascript:;">回复</a></li>'].join('');
+                        if(getCookie('userId') === val2.comAuthor){
+                            comListHtml += '                                <li><a class="delete" '+'delId="'+val.comId+'" href="javascript:;">删除</a></li>';
+                        }
+                            comListHtml += ['                                    </ul>',
+                            '                                </div>',
+                            '                                <div class="clearfix"></div>',
+                            '                            </div>'].join('');
+                    });
+
+                    comListHtml += ['                        </div>',
+                        '                        <div class="clearfix"></div>',
+                        '                    </div>'].join("");
+                });
+
+                $('#comments').html(comListHtml);
+                bindReplyAndDel();
+            }
+        });
+    }
+
+    function bindReplyAndDel(){
+        //评论弹窗
+        $('.reply').on('click', function () {
+            comArgs.comParent = $(this).attr('id');
+            toastInput("回复评论", "请输入你的评论...", "确定", "评论不能为空!", function (inputValue) {
+                comArgs.comContent = inputValue;
+                http(insertComUrl, {action: method.POST, data: comArgs}, function (resp) {
+                    if(resp.status){
+                        toast("回复成功", toastType.success, function () {
+                            getComs(comPageNo, comPageSize);
+                        });
+                    }else {
+                        toast("回复失败，请重试", toastType.warning);
+                    }
+                });
+            });
+        });
+        //删除弹窗
+        $('.delete').on('click', function () {
+            var comId = $(this).attr('delId');
+            toastDetail("删除评论", toastType.warning, "确定", "取消", function () {
+                http(deleteComUrl + comId, {action: method.DELETE}, function (resp) {
+                    if(resp.status){
+                        toast("删除成功", toastType.success);
+                        getComs(comPageNo, comPageSize);
+                    }else {
+                        toast("删除失败", toastType.warning);
+                    }
+                });
+            });
+        });
+    }
+
+    //发布评论
+    $('#comment').click(function () {
+        comArgs.comContent = $('#comText').val().trim();
+        comArgs.comParent = '';
+        http(insertComUrl, {action: method.POST, data: comArgs}, function (resp) {
+            if(resp.status){
+                toast('评论成功', toastType.success, function () {
+                    getComs(comPageNo, comPageSize);
+                });
+                $('#comText').val('');
+            }else {
+                toast('评论失败，请重试', toastType.warning);
+            }
+        });
+    });
 
     //$('#cover').mouseover(function () {
     //    $(this).animate({
@@ -164,37 +279,5 @@ require ( ['domReady','jq', 'login'], function () {
         $(this).addClass('role-item-active').siblings('.role-item').removeClass('role-item-active');
     });
 
-    //评论弹窗
-    $('.reply').on('click', function () {
-        swal({
-            title: "发布评论",
-            type: "input",
-            closeOnConfirm: false,
-            inputPlaceholder: "请输入你的评论...",
-            showLoaderOnConfirm: true,
-            showCancelButton: true,
-            confirmButtonText: "发布",
-            cancelButtonText:"取消",
-            animation:"slide-from-top"
-        }, function (inputValue) {
-            if (inputValue === false) return false;
-            if (inputValue === "") {
-                swal.showInputError("评论不能为空!");
-                return false
-            }
-            setTimeout(function () {
-                swal("Good Boy!", "你特么写了: " + inputValue, "success");
-            } ,2000);
-        });
-    });
-    //Demo
-    $('#comment').click(function () {
-        swal({
-            title:"删除成功",
-            type:"success",
-            showLoaderOnConfirm: true,
-            confirmButtonText: "确定"
-        });
-    });
 } );
 

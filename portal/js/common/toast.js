@@ -57,10 +57,31 @@ define(['jq', 'plugins/sweetalert.min'], function () {
             confirmButtonClass: "btn-primary"
         }, function (isConfirm) {
             if (isConfirm) {
-                confirmFunc();
+                confirmFunc != undefined && confirmFunc();
             } else {
-                cancelFunc();
+                cancelFunc != undefined && cancelFunc();
             }
+        });
+    }
+
+    function toastInput(title, inputPlaceholder, confirmButtonText, inputError, ajaxFunc){
+        swal({
+            title: title,
+            type: "input",
+            closeOnConfirm: false,
+            inputPlaceholder: inputPlaceholder,
+            showLoaderOnConfirm: true,
+            showCancelButton: true,
+            confirmButtonText: confirmButtonText,
+            cancelButtonText:"取消",
+            animation:"slide-from-top"
+        }, function (inputValue) {
+            if (inputValue === false) return false;
+            if (inputValue === "") {
+                swal.showInputError(inputError);
+                return false
+            }
+            ajaxFunc(inputValue);
         });
     }
 
@@ -68,6 +89,7 @@ define(['jq', 'plugins/sweetalert.min'], function () {
         toast:toast,
         toastHtml:toastHtml,
         toastDetail:toastDetail,
+        toastInput:toastInput,
         toastType: toastType
     }
 });
