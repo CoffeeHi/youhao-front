@@ -1,6 +1,6 @@
 .order {
     font-size: 1.1em;
-    cursor: pointer;
+    /*cursor: pointer;*/
     /*border: 1.5px solid rgb(189, 189, 189);*/
     transition: border .2s ease-in-out;
     border-radius: 4px;
@@ -17,17 +17,28 @@
     word-break:break-all;
 }
 .order-cover {
+    cursor: pointer;
     position: relative;
 }
 .order-cover img {
     width: 100%;
     height: auto;
 }
-.order-cover a:hover {
-    opacity: 0.3;
+.order-cover img:hover {
+    filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
 }
 .order-detail {
     padding: 10px;
+    cursor: pointer;
+}
+.order-detail span:hover {
+    color: #999;
+}
+.order-detail label{
+    cursor: auto;
 }
 .callbacks_nav:hover {
     background-color: #333;

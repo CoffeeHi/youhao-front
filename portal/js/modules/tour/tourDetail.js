@@ -31,6 +31,7 @@ require ( ['domReady','jq', 'login'], function () {
     var insertComUrl = 'web/front/com/tour'; //评论旅单
     var deleteComUrl = 'web/front/com/tour/'; //删除评论
     var getComUrl = 'web/portal/com/tour/page/'; //查询评论
+    var getTourRecentUrl = 'web/portal/tour/recent/' + tourId; //查看最近访问和最新发布旅单
 
     var contact = '',contactType = 0;
 
@@ -44,6 +45,7 @@ require ( ['domReady','jq', 'login'], function () {
 
     getTour();
     getTourists();
+    getTourRecent();
     getComs(comPageNo, comPageSize);
 
     //获取旅单信息
@@ -148,10 +150,9 @@ require ( ['domReady','jq', 'login'], function () {
                             '                                <div class="media-body response-text-right">',
                             '                                    <p>',val2.comContent,'</p>',
                             '                                    <ul>',
-                            '                                        <li>',val2.comTime,'</li>',
-                            '                                        <li><a class="reply" ','id="'+val2.comId,'" href="javascript:;">回复</a></li>'].join('');
+                            '                                        <li>',val2.comTime,'</li>'].join('');
                         if(getCookie('userId') === val2.comAuthor){
-                            comListHtml += '                                <li><a class="delete" '+'delId="'+val.comId+'" href="javascript:;">删除</a></li>';
+                            comListHtml += '                                <li><a class="delete" '+'delId="'+val2.comId+'" href="javascript:;">删除</a></li>';
                         }
                             comListHtml += ['                                    </ul>',
                             '                                </div>',
@@ -200,6 +201,43 @@ require ( ['domReady','jq', 'login'], function () {
                     }
                 });
             });
+        });
+    }
+
+    //获取最近访问和最新发布旅单
+    function getTourRecent(){
+        http(getTourRecentUrl, {action: method.GET}, function (resp) {
+            if(resp.status){
+                //最近浏览人员
+                var tourVisitors = resp.info.tourVisitors;
+                var visitorHtml = '';
+                tourVisitors.forEach(function (val) {
+                    visitorHtml +='<div class="comments-info">'+
+                    '                        <div class="cmnt-icon-left">'+
+                        '                            <a href="#"><img src="' + val.userImage + '" alt=""></a>'+
+                        '                        </div>'+
+                        '                        <div class="cmnt-icon-right">'+
+                        '                            <p>'+val.visitTime+'</p>'+
+                        '                            <p><a href="#">' +val.userName + '</a></p>'+
+                        '                        </div>'+
+                        '                        <div class="clearfix"></div>'+
+                        '                        <p class="cmmnt">个性签名：'+ (val.userSig == "" ? "我还没有签名（⊙o⊙）":val.userSig) + '</p>'+
+                        '                    </div>';
+                });
+                $('#visitors').html(visitorHtml);
+                //最近发布旅单
+                var tourRecentPosts = resp.info.tourRecentPosts;
+                var recentPostHtml = '';
+                tourRecentPosts.forEach(function (val) {
+                    recentPostHtml += ' <div class="col-xs-6 col-md-3 related-grids">'+
+                    '<a href="tourDetail.html?'+ val.id +'" class="thumbnail recentCover">'+
+                        '<img src="'+ val.coverPath +'" alt=""/>'+
+                        '</a>'+
+                        '<h5><a class="rich-text" href="tourDetail.html?' + val.id + '">' + val.target + '</a></h5>'+
+                    '</div>';
+                });
+                $('#recentPost').html(recentPostHtml);
+            }
         });
     }
 

@@ -1,4 +1,4 @@
-;
+;//失败
 define([], function () {
     var s = [' <%for(var i=0; i<list.length; i++){ var item = list[i];%><div class="media response-info">',
         '                        <div class="media-left response-text-left">',

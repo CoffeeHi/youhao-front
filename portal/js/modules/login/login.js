@@ -1,5 +1,5 @@
 ;
-define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 'template/login/loginInfo', 'template/login/modal'], function (restful, base, cookie, template, loginInfo) {
+define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 'template/login/loginInfo', 'template/login/modal'], function (restful, base, cookie, temp, loginInfo) {
 
     var http = restful.http;
     var method = restful.method;
@@ -12,9 +12,12 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
     var regUrl = "web/login/register/account/";
     var logUrl = "web/login/login/front/";
     var chkUrl = "web/login/login/frontCheck/";
-    var exitUrl = "web/login/login/frontExit"
+    var exitUrl = "web/login/login/frontExit";
+    //var removeCookie = require('common/cookie').delCookie;
     var loginInfo = loginInfo.toString;
-    var render = template.compile(loginInfo);
+    var render = temp.compile(loginInfo);
+
+    window.scrollTo(0, 1);
 
     //加载验证码
     (function initValidateCode() {
@@ -277,6 +280,7 @@ define(['common/restful', 'common/base', 'common/cookie', 'plugins/template', 't
                 }
                 $('#exit').click(function () { //绑定退出按钮
                     http(exitUrl, {action: method.DELETE}, function () {
+
                         location.reload(true);
                     });
                 });

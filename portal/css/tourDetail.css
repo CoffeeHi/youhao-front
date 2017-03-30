@@ -105,3 +105,17 @@ color: #5F9EA0;
     width: 55px;
     display: inline-block;
 }
+.comments-info {
+    margin-bottom: 4em;
+}
+.comments-info img {
+    width: 64px;
+    height: 64px;
+}
+.recentCover:hover {
+    -webkit-opacity: 0.7;
+    -moz-opacity: 0.7;
+    -ms-opacity: 0.7;
+    -o-opacity: 0.7;
+    opacity: 0.7;
+}

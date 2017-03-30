@@ -43,7 +43,6 @@ require ( ['domReady', 'jq', 'login', 'template/tour/tourPage', 'salvattore', 'w
     };
 
     getTourList(pageNo, pageSize);
-
     function getTourList(pageNo, pageSize){
         tourParam.dateStart = $('#dateStart').val().trim();
         tourParam.dateOver = $('#dateOver').val().trim();
