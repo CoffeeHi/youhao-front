@@ -1,0 +1,30 @@
+.search {
+    margin: 2.5em auto 0 auto;
+}
+.search-items .form-group {
+    font-size: 1.1em;
+}
+.search-items .form-group:nth-child(2) input {
+    margin-right: 5px;
+}
+.search-items {
+    text-align:center;
+    margin: 0 auto;
+}
+.search .btn {
+    color: #fff;
+    background: #5F9EA0;
+}
+.search .btn:hover {
+    color: #fff;
+    background-color: #42E4d8;
+    border-color: transparent;
+    transition: 0.5s all ease;
+}
+.form-group {
+    margin-right: 20px;
+}
+.form-group label {
+    color: #5F9EA0;
+    font-weight: normal;
+}

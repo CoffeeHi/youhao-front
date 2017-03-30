@@ -39,7 +39,7 @@ require ( ['domReady', 'jq', 'login', 'datetime', 'datetime-CN',
 
     var uploadCoverUrl = "web/front/tour/upload/tourImage/2?" + new Date().getTime(); //上传封面图片路径
     var uploadImageUrl = "web/front/tour/upload/tourImage/1?" + new Date().getTime(); //上传说明图片路径
-    var tourUrl = "web/front/tour?" + + new Date().getTime();
+    var tourUrl = "web/front/tour";
 
     var defaultCover = 'upload/default/tour/covers/default_cover.jpg';
     var tourArgs = {
@@ -133,10 +133,6 @@ require ( ['domReady', 'jq', 'login', 'datetime', 'datetime-CN',
                                 }
                             });
                         });
-                    },
-                    onBlur: function () {
-                        console.log($this.summernote('code'));
-                        //$('#content').val($this.summernote('code'));
                     }
                 }
             });
